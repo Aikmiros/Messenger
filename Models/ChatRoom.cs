@@ -10,6 +10,7 @@ namespace Messenger {
 
         public int id;
         public string name;
+        public int admin;
         public Message[] messages;
         public int[] participants;
 
