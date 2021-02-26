@@ -14,13 +14,13 @@ namespace Messenger {
         public string status;
         public int[] chatRooms;
 
-        public void createUser(string username, string password) { }
-        public void deleteUser(string username, string password) { }
+        public static void createUser(string username, string password) { }
+        public static void login(string username, string password) { }
+        public static void deleteUser(string username, string password) { }
         public void showChatRooms() { }
         public void showUserInfo() { }
         public void changePassword(string newPassword) { }
         public void changeUsername(string newUsername) { }
         public void changeStatus(string newStatus) { }
-        public void login(string username, string password) { }
     }
 }
