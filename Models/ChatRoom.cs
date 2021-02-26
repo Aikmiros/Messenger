@@ -17,9 +17,10 @@ namespace Messenger {
         public int _nextMessageId;
 
         public static void createRoom(string name) { }
-        public static void deleteRoom(string name) { }
+
+        public void deleteRoom() { }
         public void changeName(string name) { }
-        public void postMessage(string body, string username) { }
+        public void postMessage(Message message) { }
         public void deleteMessage(int id) { }
         public void clearHistory() { }
         public void showHistory() { }

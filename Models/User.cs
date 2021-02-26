@@ -16,7 +16,8 @@ namespace Messenger {
 
         public static void createUser(string username, string password) { }
         public static void login(string username, string password) { }
-        public static void deleteUser(string username, string password) { }
+
+        public void deleteUser() { }
         public void showChatRooms() { }
         public void showUserInfo() { }
         public void changePassword(string newPassword) { }
