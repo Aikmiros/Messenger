@@ -3,7 +3,7 @@
   <Class Name="Messenger.ChatRoom">
     <Position X="0.5" Y="3.25" Width="4" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAQAAAARAAAAAAgACAAEAMIgABAAAAAAAAAgU=</HashCode>
+      <HashCode>QAAAAAAAQAAAARAAAAAAgACAAEEMIgABAAAAAAAAAgU=</HashCode>
       <FileName>Models\ChatRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -14,11 +14,11 @@
       <FileName>Models\Message.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Messenger.User">
+  <Class Name="Messenger.UserAccount">
     <Position X="6.25" Y="3.25" Width="3.75" />
     <TypeIdentifier>
       <HashCode>IAQAAACAAAAAAAAAAAAEAAEAAABQAgAEAAABAgAAEgQ=</HashCode>
-      <FileName>Models\User.cs</FileName>
+      <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

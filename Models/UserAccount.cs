@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Messenger {
-    public class User {
+    public class UserAccount {
 
-        public static User[] users;
+        public static UserAccount[] users;
         public static int _nextUserId;
 
         public int id;
