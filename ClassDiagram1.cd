@@ -17,7 +17,7 @@
   <Class Name="Messenger.UserAccount">
     <Position X="6.25" Y="3.25" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>IAQAAACAAAAAAAAAAAAEAAEAAABQAgAEAAABAgAAEgQ=</HashCode>
+      <HashCode>IAQAAACAAAAAAAAAAAAEAAEAAABQAgAEAAAAAgAAEgQ=</HashCode>
       <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
