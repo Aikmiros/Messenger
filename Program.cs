@@ -15,6 +15,10 @@ namespace Messenger {
             UserAccount user2 = new UserAccount("Anastasia", "123456");
             UserAccount user3 = new UserAccount(user2);
 
+            ChatRoom chat1 = new ChatRoom();
+            ChatRoom chat2 = new ChatRoom(2, "Chat2");
+            ChatRoom chat3 = new ChatRoom(chat2);
+
             Console.WriteLine("Modeling end");
             Console.ReadKey();
         }
