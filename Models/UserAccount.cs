@@ -8,18 +8,18 @@ namespace Messenger {
         private static UserAccount[] users = new UserAccount[100];
         private static int _nextUserId = 0;
 
-        private int id;
+        public int id;
         private string username;
         private string password;
         private string status;
-        private int[] chatRooms;
+        private List<int> chatRooms;
         
         public UserAccount() {
             this.id = UserAccount._nextUserId++;
             this.username = "User" + this.id;
             this.password = "User" + this.id;
             this.status = "";
-            this.chatRooms = new int[100];
+            this.chatRooms = new List<int>();
             UserAccount.users[this.id] = this;
             Console.WriteLine("UserAccount created constructor default");
         }
@@ -29,8 +29,9 @@ namespace Messenger {
             this.password = password;
             this.status = "";
             this.id = UserAccount._nextUserId++;
-            this.chatRooms = new int[100];
+            this.chatRooms = new List<int>();
             UserAccount.users[this.id] = this;
+            createChatRoom();
             Console.WriteLine("UserAccount created constructor inizialization");
         }
 
@@ -42,6 +43,11 @@ namespace Messenger {
             this.chatRooms = oldUser.chatRooms;
             UserAccount.users[this.id] = this;
             Console.WriteLine("UserAccount created constructor copy");
+        }
+
+        private void createChatRoom() {
+            ChatRoom chat = new ChatRoom();
+            this.chatRooms.Add(chat.id);
         }
 
         public static void login(string username, string password) { }

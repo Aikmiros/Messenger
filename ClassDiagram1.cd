@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Messenger.ChatRoom">
-    <Position X="0.5" Y="3.25" Width="4" />
+    <Position X="0.75" Y="4" Width="4" />
     <TypeIdentifier>
-      <HashCode>QAAAAAAAQAAAARAAAAAAgACAAEEMIgABAAAAAAAAAgU=</HashCode>
+      <HashCode>QAAAAAAAQAAAAQAAAAAAgACAAEEMIgABAAAAAAAAAgU=</HashCode>
       <FileName>Models\ChatRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Messenger.Message">
-    <Position X="3.5" Y="0.5" Width="4.25" />
+    <Position X="3.75" Y="0.5" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAEAQAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAQAgQ=</HashCode>
       <FileName>Models\Message.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Messenger.UserAccount">
-    <Position X="6.25" Y="3.25" Width="3.75" />
+    <Position X="6" Y="4" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>IAQAAACAAAAAAAAAAAAEAAEAAABQAgAEAAAAAgAAEgQ=</HashCode>
+      <HashCode>IAQAIACAAAAAAAAAAAAEAAEAAABQAgAEAAAAAgAAEgQ=</HashCode>
       <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>

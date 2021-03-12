@@ -9,22 +9,22 @@ namespace Messenger {
 
 		public int id;
 		public string body;
-		public string author;
+		public int authorId;
 		public DateTime datetime;
 
 		public Message() {
 			this.id = Message._nextMessageId++;
-			this.body = "";
-			this.author = "Author: " + UserAccount.username;
+			this.body = "It's first message to say hello to you";
+			this.authorId = -1;
 			this.datetime = DateTime.UtcNow;
 			Message.messages[this.id] = this;
 			Console.WriteLine("Message created constructor default");
 		}
 
-		public Message(string author) {
+		public Message(int author, string body) {
 			this.id = Message._nextMessageId++;
-			this.body = "";
-			this.author = author;
+			this.body = body;
+			this.authorId = author;
 			this.datetime = DateTime.UtcNow;
 			Message.messages[this.id] = this;
 			Console.WriteLine("Message created constructor initialization");
@@ -33,8 +33,8 @@ namespace Messenger {
 		public Message(Message savedMessage) {
 			this.id = savedMessage.id;
 			this.body = savedMessage.body;
-			this.author = savedMessage.author;
-			this.datetime = DateTime.UtcNow;
+			this.authorId = savedMessage.authorId;
+			this.datetime = savedMessage.datetime;
 			Message.messages[this.id] = this;
 			Console.WriteLine("Message created constructor copy");
 		}

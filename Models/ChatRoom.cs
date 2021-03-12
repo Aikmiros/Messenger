@@ -11,7 +11,7 @@ namespace Messenger {
         public int id;
         public string name;
         public int admin;
-        public Message[] messages;
+        public List<Message> messages;
         public int[] participants;
 
         public int _nextMessageId;
@@ -23,6 +23,8 @@ namespace Messenger {
             this.admin = -1;
             this.participants = new int[100];
             ChatRoom.chatRooms[this.id] = this;
+            this.messages = new List<Message>();
+            this.messages.Add(new Message());
             Console.WriteLine("ChatRoom created constructor default");
         }
 
