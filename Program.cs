@@ -19,6 +19,10 @@ namespace Messenger {
             ChatRoom chat2 = new ChatRoom(2, "Chat2");
             ChatRoom chat3 = new ChatRoom(chat2);
 
+            Message message1 = new Message();
+            Message message2 = new Message("Hello");
+            Message message3 = new Message(message2);
+
             Console.WriteLine("Modeling end");
             Console.ReadKey();
         }
