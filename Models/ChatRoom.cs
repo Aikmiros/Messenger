@@ -53,9 +53,8 @@ namespace Messenger {
         public void deleteMessage(int id) { }
         public void clearHistory() { }
         public void showHistory() { }
-        public void addParticipant(string username) { }
-        public void deleteParticipant(string username) { }
-
-
+        public void addParticipant(int userId) { }
+        public void deleteParticipant(int userId) { }
+        
     }
 }
