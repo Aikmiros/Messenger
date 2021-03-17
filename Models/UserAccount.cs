@@ -5,14 +5,14 @@ using System.Text;
 namespace Messenger {
     public class UserAccount {
 
-        private static UserAccount[] users = new UserAccount[100];
-        private static int _nextUserId = 0;
+        public static UserAccount[] users = new UserAccount[100];
+        public static int _nextUserId = 0;
 
         public int id;
-        private string username;
-        private string password;
-        private string status;
-        private List<int> chatRooms;
+        public string username;
+        public string password;
+        public string status;
+        public List<int> chatRooms;
         
         public UserAccount() {
             this.id = UserAccount._nextUserId++;
@@ -45,18 +45,18 @@ namespace Messenger {
             Console.WriteLine("UserAccount created constructor copy");
         }
 
-        private void createChatRoom() {
+        public void createChatRoom() {
             ChatRoom chat = new ChatRoom();
             this.chatRooms.Add(chat.id);
         }
 
         public static void login(string username, string password) { }
 
-        private void deleteUser() { }
-        private void showChatRooms() { }
-        private void showUserInfo() { }
-        private void changePassword(string newPassword) { }
-        private void changeUsername(string newUsername) { }
-        private void changeStatus(string newStatus) { }
+        public void deleteUser() { }
+        public void showChatRooms() { }
+        public void showUserInfo() { }
+        public void changePassword(string newPassword) { }
+        public void changeUsername(string newUsername) { }
+        public void changeStatus(string newStatus) { }
     }
 }
