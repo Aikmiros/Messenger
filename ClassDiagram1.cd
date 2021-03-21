@@ -10,14 +10,14 @@
   <Class Name="Messenger.Message">
     <Position X="3.75" Y="0.5" Width="4.25" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAQAgQ=</HashCode>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Models\Message.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Messenger.UserAccount">
     <Position X="6" Y="4" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>IAQAIACAAAAAAAAAAAAEAAEAAABQAgAEAAAAAgAAEgQ=</HashCode>
+      <HashCode>IAQCIACEAAAAAAAAAQAEAAECAABQAgAGAAAAAgAAEgQ=</HashCode>
       <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
