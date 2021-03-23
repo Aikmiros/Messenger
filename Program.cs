@@ -25,6 +25,19 @@ namespace Messenger {
             user.Status = "status";
             Console.WriteLine("Статус користувача: " + user.Status);
 
+            Console.WriteLine("Властивостi класу ChatRoom");
+
+            ChatRoom chat = new ChatRoom();
+
+            Console.WriteLine("ID чата: " + chat.Id);
+
+            chat.Name = "Ч";
+            chat.Name = "Чат1";
+            Console.WriteLine("Назва чата " + chat.Name);
+
+            chat.Admin = 1;
+            chat.Admin = -1;
+            Console.WriteLine("Адмiн чата: " + chat.Admin);
 
             Console.WriteLine("");
 

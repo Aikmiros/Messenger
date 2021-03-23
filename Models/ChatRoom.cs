@@ -10,7 +10,6 @@ namespace Messenger {
 
         private int[] participants;
         private List<Message> messages;
-        private int _nextMessageId;
 
         private int id;
         private string name;
@@ -28,7 +27,7 @@ namespace Messenger {
             set
             {
                 if (value.Length >= 3 && value.Length < 30) name = value;
-                else Console.WriteLine("Довжина назви чату має бути від 3 до 30 символів");
+                else Console.WriteLine("Довжина назви чату має бути вiд 3 до 30 символiв");
             }
         }
 
@@ -38,39 +37,39 @@ namespace Messenger {
             set
             {
                 if (value >= 0) admin = value;
-                else Console.WriteLine("Xибний ідентифікатор користувача");
+                else Console.WriteLine("Xибний iдентифiкатор користувача");
             }
         }
 
         public ChatRoom()
         {
-            id = ChatRoom._nextRoomId++;
+            id = _nextRoomId++;
             name = "Chat" + id;
             admin = -1;
             participants = new int[100];
-            ChatRoom.chatRooms[id] = this;
+            chatRooms[id] = this;
             messages = new List<Message>();
             messages.Add(new Message());
-            Console.WriteLine("ChatRoom created constructor default");
+            //Console.WriteLine("ChatRoom created constructor default");
         }
 
         public ChatRoom(int userId, string name) {
-            id = ChatRoom._nextRoomId++;
+            id = _nextRoomId++;
             this.name = name;
             admin = userId;
             participants = new int[100];
-            ChatRoom.chatRooms[id] = this;
-            Console.WriteLine("ChatRoom created constructor initialization");
+            chatRooms[id] = this;
+            //Console.WriteLine("ChatRoom created constructor initialization");
         }
 
         public ChatRoom(ChatRoom from)
         {
-            id = ChatRoom._nextRoomId++;
+            id = _nextRoomId++;
             name = from.name;
             admin = from.admin;
             participants = from.participants;
-            ChatRoom.chatRooms[id] = this;
-            Console.WriteLine("ChatRoom created constructor copy");
+            chatRooms[id] = this;
+            //Console.WriteLine("ChatRoom created constructor copy");
         }
 
         public void deleteRoom() { }
