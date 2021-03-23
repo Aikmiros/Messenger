@@ -79,7 +79,7 @@ namespace Messenger {
 
         public void createChatRoom() {
             ChatRoom chat = new ChatRoom();
-            this.chatRooms.Add(chat.id);
+            this.chatRooms.Add(chat.Id);
         }
 
         public static void login(string username, string password) { }

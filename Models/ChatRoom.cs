@@ -5,16 +5,42 @@ using System.Text;
 namespace Messenger {
     public class ChatRoom {
 
-        public static ChatRoom[] chatRooms = new ChatRoom[100];
-        public static int _nextRoomId = 0;
+        private static ChatRoom[] chatRooms = new ChatRoom[100];
+        private static int _nextRoomId = 0;
 
-        public int id;
-        public string name;
-        public int admin;
-        public List<Message> messages;
-        public int[] participants;
+        private int[] participants;
+        private List<Message> messages;
+        private int _nextMessageId;
 
-        public int _nextMessageId;
+        private int id;
+        private string name;
+        private int admin;
+
+        public int Id { get; }
+
+        public int Participants { get; }
+
+        public int Messages { get; }
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (value.Length >= 3 && value.Length < 30) name = value;
+                else Console.WriteLine("Довжина назви чату має бути від 3 до 30 символів");
+            }
+        }
+
+        public int Admin
+        {
+            get { return admin; }
+            set
+            {
+                if (value >= 0) admin = value;
+                else Console.WriteLine("Xибний ідентифікатор користувача");
+            }
+        }
 
         public ChatRoom()
         {
@@ -48,7 +74,6 @@ namespace Messenger {
         }
 
         public void deleteRoom() { }
-        public void changeName(string name) { }
         public void postMessage(Message message) { }
         public void deleteMessage(int id) { }
         public void clearHistory() { }
