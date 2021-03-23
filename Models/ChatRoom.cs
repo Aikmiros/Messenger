@@ -44,32 +44,32 @@ namespace Messenger {
 
         public ChatRoom()
         {
-            this.id = ChatRoom._nextRoomId++;
-            this.name = "Chat" + this.id;
-            this.admin = -1;
-            this.participants = new int[100];
-            ChatRoom.chatRooms[this.id] = this;
-            this.messages = new List<Message>();
-            this.messages.Add(new Message());
+            id = ChatRoom._nextRoomId++;
+            name = "Chat" + id;
+            admin = -1;
+            participants = new int[100];
+            ChatRoom.chatRooms[id] = this;
+            messages = new List<Message>();
+            messages.Add(new Message());
             Console.WriteLine("ChatRoom created constructor default");
         }
 
         public ChatRoom(int userId, string name) {
-            this.id = ChatRoom._nextRoomId++;
+            id = ChatRoom._nextRoomId++;
             this.name = name;
-            this.admin = userId;
-            this.participants = new int[100];
-            ChatRoom.chatRooms[this.id] = this;
+            admin = userId;
+            participants = new int[100];
+            ChatRoom.chatRooms[id] = this;
             Console.WriteLine("ChatRoom created constructor initialization");
         }
 
         public ChatRoom(ChatRoom from)
         {
-            this.id = ChatRoom._nextRoomId++;
-            this.name = from.name;
-            this.admin = from.admin;
-            this.participants = from.participants;
-            ChatRoom.chatRooms[this.id] = this;
+            id = ChatRoom._nextRoomId++;
+            name = from.name;
+            admin = from.admin;
+            participants = from.participants;
+            ChatRoom.chatRooms[id] = this;
             Console.WriteLine("ChatRoom created constructor copy");
         }
 

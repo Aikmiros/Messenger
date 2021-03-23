@@ -22,7 +22,7 @@ namespace Messenger {
             get { return username; }
             set {
                 if (value.Length > 2) username = value;
-                else Console.WriteLine("Довжина iменi має бути не менше три символа");
+                else Console.WriteLine("Довжина iменi має бути не менше трьох символів");
             }
         }
 
@@ -35,22 +35,17 @@ namespace Messenger {
             }
         }
 
-        //public string Status {
-            //get { return status; }
-            //set { status = value; }
-        //}
         public string Status { get; set; }
         public List<int> ChatRooms { get; set; }
 
-
         // constructor default
         public UserAccount() {
-            this.id = UserAccount._nextUserId++;
-            this.username = "User" + this.id;
-            this.password = "User" + this.id;
-            this.status = "";
-            this.chatRooms = new List<int>();
-            UserAccount.users[this.id] = this;
+            id = UserAccount._nextUserId++;
+            username = "User" + id;
+            password = "User" + id;
+            status = "";
+            chatRooms = new List<int>();
+            UserAccount.users[id] = this;
             //Console.WriteLine("UserAccount created constructor default");
         }
 
@@ -58,28 +53,28 @@ namespace Messenger {
         public UserAccount(string username, string password) {
             this.username = username;
             this.password = password;
-            this.status = "";
-            this.id = UserAccount._nextUserId++;
-            this.chatRooms = new List<int>();
-            UserAccount.users[this.id] = this;
+            status = "";
+            id = UserAccount._nextUserId++;
+            chatRooms = new List<int>();
+            UserAccount.users[id] = this;
             createChatRoom();
             //Console.WriteLine("UserAccount created constructor inizialization");
         }
 
         // constructor copy
         public UserAccount(UserAccount oldUser) {
-            this.username = oldUser.username;
-            this.password = oldUser.password;
-            this.status = oldUser.status;
-            this.id = oldUser.id;
-            this.chatRooms = oldUser.chatRooms;
-            UserAccount.users[this.id] = this;
+            username = oldUser.username;
+            password = oldUser.password;
+            status = oldUser.status;
+            id = oldUser.id;
+            chatRooms = oldUser.chatRooms;
+            UserAccount.users[id] = this;
             //Console.WriteLine("UserAccount created constructor copy");
         }
 
         public void createChatRoom() {
             ChatRoom chat = new ChatRoom();
-            this.chatRooms.Add(chat.Id);
+            chatRooms.Add(chat.Id);
         }
 
         public static void login(string username, string password) { }

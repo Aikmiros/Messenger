@@ -9,23 +9,23 @@ namespace Messenger {
 		public DateTime datetime;
 
 		public Message() {
-			this.body = "It's first message to say hello to you";
-			this.authorId = -1;
-			this.datetime = DateTime.UtcNow;
+			body = "It's first message to say hello to you";
+			authorId = -1;
+			datetime = DateTime.UtcNow;
 			Console.WriteLine("Message created constructor default");
 		}
 
 		public Message(int author, string body) {
 			this.body = body;
-			this.authorId = author;
-			this.datetime = DateTime.UtcNow;
+			authorId = author;
+			datetime = DateTime.UtcNow;
 			Console.WriteLine("Message created constructor initialization");
 		}
 
 		public Message(Message savedMessage) {
-			this.body = savedMessage.body;
-			this.authorId = savedMessage.authorId;
-			this.datetime = savedMessage.datetime;
+			body = savedMessage.body;
+			authorId = savedMessage.authorId;
+			datetime = savedMessage.datetime;
 			Console.WriteLine("Message created constructor copy");
 		}
 	}
