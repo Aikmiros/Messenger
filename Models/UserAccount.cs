@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Messenger {
     public class UserAccount {
@@ -36,7 +35,7 @@ namespace Messenger {
         }
 
         public string Status { get; set; }
-        public List<int> ChatRooms { get; set; }
+        public List<int> ChatRooms { get; }
 
         // constructor default
         public UserAccount() {
