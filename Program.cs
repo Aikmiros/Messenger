@@ -12,6 +12,7 @@ namespace Messenger {
             Console.WriteLine("Modeling start");
             Console.WriteLine("");
 
+            new UserAccount("System", "admin");
 
             Console.WriteLine("Властивостi класу UserAccount");
             UserAccount user = new UserAccount();
@@ -44,6 +45,7 @@ namespace Messenger {
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
+
             Console.ReadKey();
         }
     }

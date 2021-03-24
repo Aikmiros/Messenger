@@ -5,8 +5,8 @@ using System.Text;
 namespace Messenger {
     public class UserAccount {
 
-        public static UserAccount[] users = new UserAccount[100];
-        public static int _nextUserId = 0;
+        private static UserAccount[] users = new UserAccount[100];
+        private static int _nextUserId = 0;
 
         private int id;
         private string username;
@@ -70,6 +70,10 @@ namespace Messenger {
             chatRooms = oldUser.chatRooms;
             users[id] = this;
             //Console.WriteLine("UserAccount created constructor copy");
+        }
+
+        public static UserAccount findUser(int id) {
+            return users[id];
         }
 
         public void createChatRoom() {

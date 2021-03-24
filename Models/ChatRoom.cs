@@ -8,7 +8,7 @@ namespace Messenger {
         private static ChatRoom[] chatRooms = new ChatRoom[100];
         private static int _nextRoomId = 0;
 
-        private int[] participants;
+        private List<int> participants;
         private List<Message> messages;
 
         private int id;
@@ -46,7 +46,6 @@ namespace Messenger {
             id = _nextRoomId++;
             name = "Chat" + id;
             admin = -1;
-            participants = new int[100];
             chatRooms[id] = this;
             messages = new List<Message>();
             messages.Add(new Message());
@@ -57,7 +56,6 @@ namespace Messenger {
             id = _nextRoomId++;
             this.name = name;
             admin = userId;
-            participants = new int[100];
             chatRooms[id] = this;
             //Console.WriteLine("ChatRoom created constructor initialization");
         }
@@ -72,13 +70,29 @@ namespace Messenger {
             //Console.WriteLine("ChatRoom created constructor copy");
         }
 
-        public void deleteRoom() { }
-        public void postMessage(Message message) { }
-        public void deleteMessage(int id) { }
-        public void clearHistory() { }
-        public void showHistory() { }
-        public void addParticipant(int userId) { }
-        public void deleteParticipant(int userId) { }
-        
+        public static void deleteRoom(int id) {
+            chatRooms[id] = null;
+        }
+        public void postMessage(Message message) {
+            messages.Add(message);
+        }
+        public void deleteMessage(int id) {
+            messages.RemoveAt(id);
+        }
+        public void clearHistory() {
+            messages.Clear();
+        }
+        public void showHistory() {
+            messages.ForEach(msg => msg.show());
+        }
+        public void addParticipant(int userId) {
+            if (!participants.Contains(userId)) {
+                participants.Add(userId);
+            }
+        }
+        public void deleteParticipant(int userId) {
+            participants.Remove(userId);
+        }
+
     }
 }

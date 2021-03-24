@@ -10,7 +10,7 @@ namespace Messenger {
 
 		public Message() {
 			body = "It's first message to say hello to you";
-			authorId = -1;
+			authorId = 0;
 			datetime = DateTime.UtcNow;
 			Console.WriteLine("Message created constructor default");
 		}
@@ -28,5 +28,11 @@ namespace Messenger {
 			datetime = savedMessage.datetime;
 			Console.WriteLine("Message created constructor copy");
 		}
+
+		public void show() {
+			Console.WriteLine(UserAccount.findUser(authorId).Username + "  " + datetime);
+			Console.WriteLine(body);
+		}
+
 	}
 }
