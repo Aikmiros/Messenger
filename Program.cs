@@ -42,6 +42,20 @@ namespace Messenger {
 
             Console.WriteLine("");
 
+            Console.WriteLine("Властивостi класу Message");
+
+            Message message = new Message();
+
+            message.Body = "";
+            message.Body = "Greetings";
+
+            Console.WriteLine("Тіло повідомлення: " + message.Body);
+            message.AuthorId = -1;
+            message.AuthorId = 0;
+
+            Console.WriteLine("Id автора повідомлення: " + message.AuthorId);
+
+            Console.WriteLine("Дата відправлення повідомлення: " + message.Datetime);
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");

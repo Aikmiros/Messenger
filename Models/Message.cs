@@ -4,9 +4,31 @@ using System.Text;
 
 namespace Messenger {
 	public class Message {
-		public string body;
-		public int authorId;
-		public DateTime datetime;
+		private string body;
+		private int authorId;
+		private DateTime datetime;
+
+		public string Body
+		{
+			get { return body; }
+			set
+			{
+				if (value == "") Console.WriteLine("У повідомлення відсутній текст");
+				else body = value;
+			}
+		}
+
+		public int AuthorId 
+		{ 
+			get { return authorId; }
+			set 
+			{ 
+				if (value >= 0) authorId = value;
+				else Console.WriteLine("Автора повідомлення не існує");
+			}
+		}
+
+		public DateTime Datetime { get; }
 
 		public Message() {
 			body = "It's first message to say hello to you";
@@ -33,6 +55,5 @@ namespace Messenger {
 			Console.WriteLine(UserAccount.findUser(authorId).Username + "  " + datetime);
 			Console.WriteLine(body);
 		}
-
 	}
 }
