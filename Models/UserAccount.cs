@@ -21,7 +21,7 @@ namespace Messenger {
             get { return username; }
             set {
                 if (value.Length > 2) username = value;
-                else Console.WriteLine("Довжина iменi має бути не менше трьох символів");
+                else Console.WriteLine("Довжина iменi має бути не менше трьох символiв");
             }
         }
 

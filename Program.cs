@@ -26,6 +26,8 @@ namespace Messenger {
             user.Status = "status";
             Console.WriteLine("Статус користувача: " + user.Status);
 
+            Console.WriteLine("");
+
             Console.WriteLine("Властивостi класу ChatRoom");
 
             ChatRoom chat = new ChatRoom();
@@ -49,13 +51,13 @@ namespace Messenger {
             message.Body = "";
             message.Body = "Greetings";
 
-            Console.WriteLine("Тіло повідомлення: " + message.Body);
+            Console.WriteLine("Тiло повiдомлення: " + message.Body);
             message.AuthorId = -1;
             message.AuthorId = 0;
 
-            Console.WriteLine("Id автора повідомлення: " + message.AuthorId);
+            Console.WriteLine("Id автора повiдомлення: " + message.AuthorId);
 
-            Console.WriteLine("Дата відправлення повідомлення: " + message.Datetime);
+            Console.WriteLine("Дата вiдправлення повiдомлення: " + message.Datetime);
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
