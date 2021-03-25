@@ -48,6 +48,7 @@ namespace Messenger {
             admin = -1;
             chatRooms[id] = this;
             messages = new List<Message>();
+            participants = new List<int>();
             messages.Add(new Message());
             //Console.WriteLine("ChatRoom created constructor default");
         }
@@ -56,6 +57,8 @@ namespace Messenger {
             id = _nextRoomId++;
             this.name = name;
             admin = userId;
+            messages = new List<Message>();
+            participants = new List<int>();
             chatRooms[id] = this;
             //Console.WriteLine("ChatRoom created constructor initialization");
         }
