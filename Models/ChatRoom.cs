@@ -17,9 +17,13 @@ namespace Messenger {
 
         public int Id { get; }
 
-        public int Participants { get; }
+        public List<int> Participants {
+            get { return participants; }
+        }
 
-        public int Messages { get; }
+        public List<Message> Messages {
+            get { return messages; }
+        }
 
         public string Name
         {
@@ -69,8 +73,56 @@ namespace Messenger {
             name = from.name;
             admin = from.admin;
             participants = from.participants;
+            messages = new List<Message>();
             chatRooms[id] = this;
             //Console.WriteLine("ChatRoom created constructor copy");
+        }
+
+        public static ChatRoom operator +(ChatRoom A, Message msg)
+        {
+            A.postMessage(msg);
+            return A;
+        }
+
+        public static ChatRoom operator+ (ChatRoom A, int userId)
+        {
+            A.addParticipant(userId);
+            return A;
+        }
+
+        public static ChatRoom operator- (ChatRoom A, int userId)
+        {
+            A.deleteParticipant(userId);
+            return A;
+        }
+
+        public static ChatRoom operator+ (ChatRoom A, ChatRoom B) {
+            ChatRoom res = new ChatRoom(A);
+            res.clearHistory();
+            foreach (int id in B.participants) {
+                res.addParticipant(id);
+            }
+            return res;
+        }
+
+        public static bool operator> (ChatRoom A, ChatRoom B)
+        {
+            return A.Participants.Count > B.participants.Count;
+        }
+
+        public static bool operator< (ChatRoom A, ChatRoom B)
+        {
+            return A.Participants.Count < B.participants.Count;
+        }
+
+        public static bool operator& (ChatRoom A, ChatRoom B)
+        {
+            foreach(int i in A.Participants){
+                if (B.participants.Contains(i)){
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static void deleteRoom(int id) {
