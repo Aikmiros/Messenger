@@ -86,6 +86,34 @@ namespace Messenger {
             Console.WriteLine("chat2 & chat3: " + (chat2 & chat3));
 
             Console.WriteLine("");
+
+
+            Console.WriteLine("Перевантаження операторiв для класу UserAccount");
+            Console.WriteLine("Унарнi оператори");
+            UserAccount user2 = new UserAccount("user2", "qwerty");
+            Console.WriteLine("user++ => user.rank = " + user++.Rank);
+            Console.WriteLine("user-- => user.rank = " + user--.Rank);
+            Console.WriteLine("");
+
+            Console.WriteLine("Бiнарнi оператори");
+            user = user + "newstatus";
+            Console.WriteLine("user + 'newstatus' => user.status =  " + user.Status);
+            ChatRoom chat4 = new ChatRoom(user.Id, "newChat");
+            user2 = user2 + chat4;
+            Console.WriteLine("user + chat => user.ChatRooms = " + String.Join(", ", user2.chatRooms));
+            user2 = user2 - chat4;
+            Console.WriteLine("user - chat => user.ChatRooms = " + String.Join(", ", user2.chatRooms));
+            Console.WriteLine("");
+
+            Console.WriteLine("Логiчнi оператори");
+            user.Rank = 4;
+            Console.WriteLine("user > user2 => " + (user > user2));
+            Console.WriteLine("user < user2 => " + (user < user2));
+            Console.WriteLine("");
+
+
+
+            Console.WriteLine("");
             Console.WriteLine("Modeling end");
 
             Console.ReadKey();

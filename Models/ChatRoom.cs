@@ -15,7 +15,7 @@ namespace Messenger {
         private string name;
         private int admin;
 
-        public int Id { get; }
+        public int Id { get { return id; } }
 
         public List<int> Participants {
             get { return participants; }

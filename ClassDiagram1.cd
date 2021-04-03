@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Messenger.ChatRoom">
-    <Position X="1" Y="1.5" Width="2.75" />
+    <Position X="0.5" Y="1.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAQAAAAQAAAAAAgQSAAEEMIgABACAAAQAAAgE=</HashCode>
+      <HashCode>AAACAAAAQAAAAQAAQAGCgwSAAEEMIgABACAAAQAAAgE=</HashCode>
       <FileName>Models\ChatRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -15,9 +15,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Messenger.UserAccount">
-    <Position X="7.5" Y="1.5" Width="3.25" />
+    <Position X="7.5" Y="1.5" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAQCIICEAAAAAAAAAQAEAAECAABQAgAGAAAAAgAAEgQ=</HashCode>
+      <HashCode>IAQCIICEAAAAAAAAQQEEIAECAABQAgAGAAAAAgAAEiQ=</HashCode>
       <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Messenger {
     public class UserAccount {
@@ -11,10 +12,16 @@ namespace Messenger {
         private string username;
         private string password;
         private string status;
-        private List<int> chatRooms;
+        private int rank;
+        public List<int> chatRooms;
 
         public int Id {
             get { return id; }
+        }
+
+        public int Rank {
+            get { return rank; }
+            set { rank = value; }
         }
 
         public string Username {
@@ -35,13 +42,13 @@ namespace Messenger {
         }
 
         public string Status { get; set; }
-        public List<int> ChatRooms { get; }
-
+        
         // constructor default
         public UserAccount() {
             id = _nextUserId++;
             username = "User" + id;
             password = "User" + id;
+            rank = 0;
             status = "";
             chatRooms = new List<int>();
             users[id] = this;
@@ -52,6 +59,7 @@ namespace Messenger {
         public UserAccount(string username, string password) {
             this.username = username;
             this.password = password;
+            rank = 0;
             status = "";
             id = _nextUserId++;
             chatRooms = new List<int>();
@@ -66,6 +74,7 @@ namespace Messenger {
             password = oldUser.password;
             status = oldUser.status;
             id = oldUser.id;
+            rank = oldUser.rank;
             chatRooms = oldUser.chatRooms;
             users[id] = this;
             //Console.WriteLine("UserAccount created constructor copy");
@@ -79,6 +88,48 @@ namespace Messenger {
             ChatRoom chat = new ChatRoom();
             chatRooms.Add(chat.Id);
         }
+
+
+        //Унарні оператори
+        public static UserAccount operator ++(UserAccount user) {
+            if(user.rank < 10) user.rank++;
+            return user;
+        }
+
+        public static UserAccount operator --(UserAccount user) {
+            if (user.rank > 0) user.rank--;
+            return user;
+        }
+
+        //Бінарні оператори
+        public static UserAccount operator+ (UserAccount user, string status) {
+            user.Status += status;
+            return user;
+        }
+
+        public static UserAccount operator+ (UserAccount user, ChatRoom chat) {
+            chat.addParticipant(user.id);
+            user.chatRooms.Add(chat.Id);
+            return user;
+        }
+
+        public static UserAccount operator- (UserAccount user, ChatRoom chat) {
+            chat.deleteParticipant(user.id);
+            user.chatRooms.Remove(chat.Id);
+            return user;
+        }
+
+        //Логічні оператори
+        public static bool operator <(UserAccount user1, UserAccount user2) {
+            if (user1.rank < user2.rank) return true;
+            else return false;
+        }
+
+        public static bool operator >(UserAccount user1, UserAccount user2) {
+            if (user1.rank > user2.rank) return true;
+            else return false;
+        }
+
 
         public static void login(string username, string password) { }
 
