@@ -97,7 +97,7 @@ namespace Messenger {
 
             Console.WriteLine("Бiнарнi оператори");
             user = user + "newstatus";
-            Console.WriteLine("user + 'newstatus' => user.status =  " + user.Status);
+            Console.WriteLine("user + 'newstatus' => user.status = " + user.Status);
             ChatRoom chat4 = new ChatRoom(user.Id, "newChat");
             user2 = user2 + chat4;
             Console.WriteLine("user + chat => user.ChatRooms = " + String.Join(", ", user2.chatRooms));
@@ -105,7 +105,7 @@ namespace Messenger {
             Console.WriteLine("user - chat => user.ChatRooms = " + String.Join(", ", user2.chatRooms));
             Console.WriteLine("");
 
-            Console.WriteLine("Логiчнi оператори");
+            Console.WriteLine("Оператори порiвняння");
             user.Rank = 4;
             Console.WriteLine("user > user2 => " + (user > user2));
             Console.WriteLine("user < user2 => " + (user < user2));
