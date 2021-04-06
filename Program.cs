@@ -61,33 +61,6 @@ namespace Messenger {
 
             Console.WriteLine("");
 
-            Console.WriteLine("Testing operators");
-
-            ChatRoom chat2 = new ChatRoom { Name = "Chat2", Admin = user.Id};
-            chat2.addParticipant(user.Id);
-            chat2 = chat2 + new UserAccount().Id;
-            chat2 = chat2 + new Message();
-
-            ChatRoom chat3 = chat + chat2;
-
-            string users = "";
-
-            for(int i = 0; i < chat3.Participants.Count; i++){
-                if (i > 0) users += ", ";
-                users += chat3.Participants[i];
-            }
-
-            Console.WriteLine("");
-
-            Console.WriteLine("Chat3 participants: " + users);
-
-            Console.WriteLine("");
-
-            Console.WriteLine("chat2 & chat3: " + (chat2 & chat3));
-
-            Console.WriteLine("");
-
-
             Console.WriteLine("Перевантаження операторiв для класу UserAccount");
             Console.WriteLine("Унарнi оператори");
             UserAccount user2 = new UserAccount("user2", "qwerty");
@@ -111,7 +84,59 @@ namespace Messenger {
             Console.WriteLine("user < user2 => " + (user < user2));
             Console.WriteLine("");
 
+            Console.WriteLine("Перевантаження операторiв для класу ChatRoom");
+            Console.WriteLine("");
 
+            ChatRoom chat2 = new ChatRoom { Name = "Chat2", Admin = user.Id };
+            chat2.addParticipant(user.Id);
+
+            Console.WriteLine("Унарнi оператори");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("chat2 => " + !!chat2);
+            Console.WriteLine("!chat2 => " + !chat2);
+            Console.WriteLine("");
+
+            Console.WriteLine("Бiнарнi оператори");
+
+            Console.WriteLine("");
+
+            chat2.addParticipant(user.Id);
+
+            Console.WriteLine("chat2.participants: " + chat2.participantList);
+            int user3 = new UserAccount().Id;
+            chat2 = chat2 + user3;
+            Console.WriteLine("chat2 = chat2 + user3 => chat2.participants: " + chat2.participantList);
+
+            chat2 = chat2 + new Message();
+
+            chat += new UserAccount().Id;
+
+            Console.WriteLine("");
+
+            ChatRoom chat3 = chat2 + chat;
+
+            Console.WriteLine("chat3 = chat + chat2 => chat3.participants: " + chat3.participantList);
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Логiчнi оператори");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("chat && chat2: " + !!(chat2 && chat));
+            Console.WriteLine("chat || chat2: " + !!(chat2 || chat));
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Оператори порiвняння");
+            
+            Console.WriteLine("");
+
+            Console.WriteLine("chat3 > chat2 => " + (chat3 > chat2));
+            Console.WriteLine("chat3 < chat2 => " + (chat3 < chat2));
+            Console.WriteLine("");
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");

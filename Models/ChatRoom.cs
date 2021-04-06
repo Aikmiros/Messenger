@@ -21,6 +21,20 @@ namespace Messenger {
             get { return participants; }
         }
 
+        public string participantList
+        {
+            get {
+                string users = "";
+
+                for (int i = 0; i < participants.Count; i++)
+                {
+                    if (i > 0) users += ", ";
+                    users += participants[i];
+                }
+                return users;
+            }
+        }
+
         public List<Message> Messages {
             get { return messages; }
         }
@@ -54,7 +68,6 @@ namespace Messenger {
             messages = new List<Message>();
             participants = new List<int>();
             messages.Add(new Message());
-            //Console.WriteLine("ChatRoom created constructor default");
         }
 
         public ChatRoom(int userId, string name) {
@@ -64,7 +77,6 @@ namespace Messenger {
             messages = new List<Message>();
             participants = new List<int>();
             chatRooms[id] = this;
-            //Console.WriteLine("ChatRoom created constructor initialization");
         }
 
         public ChatRoom(ChatRoom from)
@@ -72,10 +84,14 @@ namespace Messenger {
             id = _nextRoomId++;
             name = from.name;
             admin = from.admin;
-            participants = from.participants;
+            participants = from.Participants.Count == 0 ? new List<int>() : new List<int>(from.Participants);
             messages = new List<Message>();
             chatRooms[id] = this;
-            //Console.WriteLine("ChatRoom created constructor copy");
+        }
+
+        public static bool operator !(ChatRoom A)
+        {
+            return A.participants.Count == 0;
         }
 
         public static ChatRoom operator +(ChatRoom A, Message msg)
@@ -115,14 +131,41 @@ namespace Messenger {
             return A.Participants.Count < B.participants.Count;
         }
 
-        public static bool operator& (ChatRoom A, ChatRoom B)
+        public static bool operator true(ChatRoom A)
         {
-            foreach(int i in A.Participants){
+            return A.participants.Count > 0;
+        }
+        public static bool operator false(ChatRoom A)
+        {
+            return A.participants.Count == 0; ;
+        }
+
+        public static ChatRoom operator & (ChatRoom A, ChatRoom B)
+        {
+            ChatRoom C = new ChatRoom(A.Admin, A.Name);
+            foreach (int i in A.Participants){
                 if (B.participants.Contains(i)){
-                    return true;
+                    C.addParticipant(i);
                 }
             }
-            return false;
+            return C;
+        }
+
+        public static ChatRoom operator |(ChatRoom A, ChatRoom B)
+        {
+            ChatRoom C = new ChatRoom(A.admin, A.name);
+            foreach (int i in A.Participants)
+            {
+                C.addParticipant(i);
+            }
+            foreach (int i in B.Participants)
+            {
+                if (A.participants.Contains(i))
+                {
+                    C.addParticipant(i);
+                }
+            }
+            return C;
         }
 
         public static void deleteRoom(int id) {
@@ -148,6 +191,5 @@ namespace Messenger {
         public void deleteParticipant(int userId) {
             participants.Remove(userId);
         }
-
     }
 }
