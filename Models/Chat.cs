@@ -55,19 +55,17 @@ namespace Messenger
             chatRooms[id] = null;
         }
 
-        public void postMessage(Message message)
-        {
-            messages.Add(message);
-        }
+        //Метод, в который передаём пользователя, который хочет отправить сообщение и само сообщение,
+        //проверяем есть ли у пользователя разрешение его отправить(например, в канале только автор может это делать),
+        //создаем сообщение и возвращаем положительный/отрицательный результат
+        public abstract bool sendMessage(UserAccount user, string messageBody);
 
-        public void deleteMessage(int id)
-        {
-            messages.RemoveAt(id);
-        }
-        public void clearHistory()
-        {
-            messages.Clear();
-        }
+        //То же самое с удалением
+        public abstract bool removeMessage(UserAccount user, int messageId);
+
+        //Тоже проверяем, кто хочет очистить историю(GroupChat, channel - админ, PersonalMessages - не проверяем)
+        public abstract void clearHistory(UserAccount user);
+
         public void showHistory()
         {
             messages.ForEach(msg => msg.show());
