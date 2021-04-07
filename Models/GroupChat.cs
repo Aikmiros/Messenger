@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Messenger {
-    public class GroupChat : Chat
-    {
+    public class GroupChat : Chat {
         protected string name;
         protected int admin;
 
@@ -28,6 +27,10 @@ namespace Messenger {
             get { return participants; }
         }
 
+        public GroupChat() : base() {
+            name = "GroupChat";
+            admin = -1;
+        }
 
         public GroupChat(int userId, string name) : base() {
             this.name = name;
@@ -39,13 +42,22 @@ namespace Messenger {
             admin = from.admin;
         }
 
-        public void addParticipant(int userId) {
-            if (!participants.Contains(userId)) {
+        public override void addParticipant(UserAccount user, int userId) {
+            if (user.Id == admin && !participants.Contains(userId)) {
                 participants.Add(userId);
             }
         }
-        public void deleteParticipant(int userId) {
-            participants.Remove(userId);
+
+        public override void openChat(UserAccount user, bool open) {
+            if (user.Id == admin) {
+                opened = open;
+            }
+        }
+
+        public override void deleteParticipant(UserAccount user, int userId) {
+            if (user.Id == admin || userId == user.Id) {
+                participants.Remove(userId);
+            }
         }
 
         public override bool sendMessage(UserAccount user, string messageBody) {
