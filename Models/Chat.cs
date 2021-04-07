@@ -17,23 +17,24 @@ namespace Messenger
         public int Id { get { return id; } }
         public bool Opened { get { return opened; } }
 
-        public List<int> Participants {
-            get { return participants; }
-        }
+        public virtual List<int> Participants { get; }
 
         public List<Message> Messages {
             get { return messages; }
         }
 
-        public Chat() {
-            id = _nextRoomId++;
-            chatRooms[id] = this;
-            messages = new List<Message>();
-            participants = new List<int>();
-            messages.Add(new Message());
-        }
+        //public Chat()
+        //{
+        //    id = _nextRoomId++;
+        //    chatRooms[id] = this;
+        //    messages = new List<Message>();
+        //    participants = new List<int>();
+        //    messages.Add(new Message());
+        //}
 
-        public Chat(int userId, string name) {
+        //public Chat(int userId, string name)
+        public Chat()
+        {
             id = _nextRoomId++;
             messages = new List<Message>();
             participants = new List<int>();
