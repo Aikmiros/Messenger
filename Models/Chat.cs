@@ -15,7 +15,7 @@ namespace Messenger
         protected bool opened;
 
         public int Id { get { return id; } }
-        public bool Opened { get { return opened; } }
+        public bool Opened { get; }
 
         public virtual List<int> Participants { get; }
 
@@ -39,6 +39,7 @@ namespace Messenger
             messages = new List<Message>();
             participants = new List<int>();
             chatRooms[id] = this;
+            opened = false;
         }
 
         public Chat(Chat from) {
@@ -46,6 +47,7 @@ namespace Messenger
             participants = from.Participants.Count == 0 ? new List<int>() : new List<int>(from.Participants);
             messages = new List<Message>();
             chatRooms[id] = this;
+            opened = false;
         }
 
         public static void deleteRoom(int id) {
@@ -70,8 +72,8 @@ namespace Messenger
         //Первый аргумент - пользователь, который хочет добавить другого пользователя
         //В методе проверяем, есть ли у него право это сделать а потом добавляем пользователя если права есть
         //(GroupChat, Channel - добавлять может только админ, PersonalMessages  - никто)
-        public virtual void addParticipant(UserAccount user, int userId) {}
-        public virtual void deleteParticipant(UserAccount user, int userId) {}
+        public virtual void addParticipant(UserAccount user, int userId) { }
+        public virtual void deleteParticipant(UserAccount user, int userId) { }
 
         //Управление доступом к чату. Если чат открыт, в него можно входить с помощью joinChat()
         //Открывает чат в GroupChat и Channel админ, в PersonalMessages - никто
