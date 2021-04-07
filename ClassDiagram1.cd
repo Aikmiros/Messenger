@@ -3,21 +3,21 @@
   <Class Name="Messenger.ChatRoom">
     <Position X="0.5" Y="1.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAQAAAAQAAQAGCgwSAAEEMIgABACAAAQAAAgE=</HashCode>
+      <HashCode>AAACAAAAQAAAAQAAQBGCgwSAAEEMIpABACBAAQAAAgE=</HashCode>
       <FileName>Models\ChatRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Messenger.Message">
-    <Position X="4.5" Y="0.5" Width="2.5" />
+    <Position X="4.5" Y="0.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAAAAAABAAAAAQAAAAAABBAAAABQAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAAAAAwBCBIgAAAQAAAIIABBAAAABQAiA=</HashCode>
       <FileName>Models\Message.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Messenger.UserAccount">
-    <Position X="7.5" Y="1.5" Width="4" />
+    <Position X="8.25" Y="1.5" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAQCIICEAAAAAAAAQQEEIAECAABQAgAGAAAAAgAAEiQ=</HashCode>
+      <HashCode>IAQDIICEAQAAAAAAQQGEIgEAAABQAgIGAAAAAgAAEgQ=</HashCode>
       <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
