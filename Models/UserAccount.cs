@@ -13,7 +13,7 @@ namespace Messenger {
         private string password;
         private string status;
         private int rank;
-        public List<int> chatRooms;
+        public List<int> GroupChats;
 
         public int Id {
             get { return id; }
@@ -50,7 +50,7 @@ namespace Messenger {
             password = "User" + id;
             rank = 0;
             status = "";
-            chatRooms = new List<int>();
+            GroupChats = new List<int>();
             users[id] = this;
             //Console.WriteLine("UserAccount created constructor default");
         }
@@ -62,9 +62,9 @@ namespace Messenger {
             rank = 0;
             status = "";
             id = _nextUserId++;
-            chatRooms = new List<int>();
+            GroupChats = new List<int>();
             users[id] = this;
-            createChatRoom();
+            createGroupChat();
             //Console.WriteLine("UserAccount created constructor inizialization");
         }
 
@@ -75,7 +75,7 @@ namespace Messenger {
             status = oldUser.status;
             id = oldUser.id;
             rank = oldUser.rank;
-            chatRooms = oldUser.chatRooms;
+            GroupChats = oldUser.GroupChats;
             users[id] = this;
             //Console.WriteLine("UserAccount created constructor copy");
         }
@@ -84,9 +84,9 @@ namespace Messenger {
             return users[id];
         }
 
-        public void createChatRoom() {
-            ChatRoom chat = new ChatRoom();
-            chatRooms.Add(chat.Id);
+        public void createGroupChat() {
+            GroupChat chat = new GroupChat();
+            GroupChats.Add(chat.Id);
         }
 
 
@@ -107,15 +107,15 @@ namespace Messenger {
             return user;
         }
 
-        public static UserAccount operator+ (UserAccount user, ChatRoom chat) {
+        public static UserAccount operator+ (UserAccount user, GroupChat chat) {
             chat.addParticipant(user.id);
-            user.chatRooms.Add(chat.Id);
+            user.GroupChats.Add(chat.Id);
             return user;
         }
 
-        public static UserAccount operator- (UserAccount user, ChatRoom chat) {
+        public static UserAccount operator- (UserAccount user, GroupChat chat) {
             chat.deleteParticipant(user.id);
-            user.chatRooms.Remove(chat.Id);
+            user.GroupChats.Remove(chat.Id);
             return user;
         }
 
@@ -134,7 +134,7 @@ namespace Messenger {
         public static void login(string username, string password) { }
 
         public void deleteUser() { }
-        public void showChatRooms() { }
+        public void showGroupChats() { }
         public void showUserInfo() { }
         public void changePassword(string newPassword) { }
         public void changeUsername(string newUsername) { }
