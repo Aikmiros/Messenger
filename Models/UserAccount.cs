@@ -64,7 +64,7 @@ namespace Messenger {
             id = _nextUserId++;
             GroupChats = new List<int>();
             users[id] = this;
-            createGroupChat();
+            createGroupChat("Hello world");
             //Console.WriteLine("UserAccount created constructor inizialization");
         }
 
@@ -84,8 +84,8 @@ namespace Messenger {
             return users[id];
         }
 
-        public void createGroupChat() {
-            GroupChat chat = new GroupChat();
+        public void createGroupChat(string name) {
+            GroupChat chat = new GroupChat(id, name);
             GroupChats.Add(chat.Id);
         }
 

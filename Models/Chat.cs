@@ -81,14 +81,10 @@ namespace Messenger
 
         //Метод, в который передаём пользователя, который хочет отправить сообщение и само сообщение,
         //проверяем есть ли у пользователя разрешение его отправить(например, в канале только автор может это делать), и создаем сообщение
-        public virtual void sendMessage(UserAccount user, string messageBody) {
-            messages.Add(new Message(user.Id, messageBody));
-        }
+        public abstract bool sendMessage(UserAccount user, string messageBody);
 
         //То же самое с удалением
-        public virtual void removeMessage(UserAccount user, int messageId) {
-            messages.RemoveAt(messageId);
-        }
+        public abstract bool removeMessage(UserAccount user, int messageId);
 
         //Тоже проверяем, кто хочет очистить историю(GroupChat, channel - админ, PersonalMessages - не проверяем)
         public virtual void clearHistory(UserAccount user) {
