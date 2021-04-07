@@ -89,10 +89,24 @@ namespace Messenger {
             chatRooms[id] = this;
         }
 
+        //Унарні оператори
+
         public static bool operator !(ChatRoom A)
         {
             return A.participants.Count == 0;
         }
+
+        public static bool operator true(ChatRoom A)
+        {
+            return A.participants.Count > 0;
+        }
+
+        public static bool operator false(ChatRoom A)
+        {
+            return A.participants.Count == 0; ;
+        }
+
+        //Бінарні оператори
 
         public static ChatRoom operator +(ChatRoom A, Message msg)
         {
@@ -121,6 +135,8 @@ namespace Messenger {
             return res;
         }
 
+        //Оператори порівняння
+
         public static bool operator> (ChatRoom A, ChatRoom B)
         {
             return A.Participants.Count > B.participants.Count;
@@ -131,14 +147,7 @@ namespace Messenger {
             return A.Participants.Count < B.participants.Count;
         }
 
-        public static bool operator true(ChatRoom A)
-        {
-            return A.participants.Count > 0;
-        }
-        public static bool operator false(ChatRoom A)
-        {
-            return A.participants.Count == 0; ;
-        }
+        //Логічні оператори
 
         public static ChatRoom operator & (ChatRoom A, ChatRoom B)
         {
