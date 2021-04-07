@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Messenger {
-	public class Message {
+	public class Message
+	{
 		private string body;
 		private int authorId;
 		private DateTime datetime;
@@ -51,6 +52,70 @@ namespace Messenger {
 			//Console.WriteLine("Message created constructor copy");
 		}
 
+		//Унарні оператори
+		public static bool operator !(Message A)
+		{
+			return A.body.Length == 0;
+		}
+
+		public static Message operator ++(Message A)
+        {
+			if (A.authorId <= 0) A.authorId++;
+			return A;
+        }
+
+		public static Message operator --(Message A)
+        {
+			if (A.authorId > 0) A.authorId--;
+			return A;
+        }
+		//Бінарні оператори
+		public static Message operator +(Message A, string body)
+		{
+			A.body += body;
+			return A;
+		}
+
+		public static Message operator +(Message A, Message B)
+        {
+			Message C = new Message();
+			C.body = A.body + B.body;
+			return C;
+        }
+	
+		//Оператори порівняння
+		public static bool operator >(Message A, Message B)
+		{
+			if (A.body.Length > B.body.Length) return true;
+			else return false;
+		}
+		public static bool operator <(Message A, Message B)
+		{
+			if (A.body.Length < B.body.Length) return true;
+			else return false;
+		}
+
+		public static bool operator ==(Message A, Message B)
+		{
+			if (A.body == B.body) return true;
+			else return false;
+		}
+		public static bool operator !=(Message A, Message B)
+		{
+			if (A.body != B.body) return true;
+			else return false;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null || !(obj is Message))
+				return false;
+			else return body == ((Message)obj).body;
+		}
+		public override int GetHashCode()
+		{
+			return body.GetHashCode();
+		}
 		public void show() {
 			Console.WriteLine(UserAccount.findUser(authorId).Username + "  " + datetime);
 			Console.WriteLine(body);

@@ -138,7 +138,54 @@ namespace Messenger {
             Console.WriteLine("chat3 < chat2 => " + (chat3 < chat2));
             Console.WriteLine("");
 
+            Console.WriteLine("Перевантаження операторiв для класу Message");
             Console.WriteLine("");
+
+            Message firstMsg = new Message { Body = "First message" };
+
+            Console.WriteLine("Унарнi оператори");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("first => " + !!firstMsg);
+            Console.WriteLine("!first => " + !firstMsg);
+
+            Console.WriteLine("");
+
+            Console.WriteLine("firstMsg++ => firstMsg.authorId = " + firstMsg++.AuthorId);
+            Console.WriteLine("firstMsg-- => firstMsg.authorId = " + firstMsg--.AuthorId);
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Бiнарнi оператори");
+
+            Console.WriteLine("");
+
+            firstMsg = firstMsg + " and more.";
+            Console.WriteLine("firstMsg + 'and more.' => firstMsg.body = " + firstMsg.Body);
+
+            Message secondMsg = new Message { Body = " Second message" };
+
+            Message bothMsg = firstMsg + secondMsg;
+
+            Console.WriteLine("firstMsg + secondMsg => bothMsg.body = " + bothMsg.Body);
+
+            Console.WriteLine("");
+
+            Console.WriteLine("Оператори порiвняння");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("firstMsg > secondMsg => " + (firstMsg > secondMsg));
+            Console.WriteLine("firstMsg < secondMsg => " + (firstMsg < secondMsg));
+
+            Console.WriteLine("");
+
+            Console.WriteLine("firstMsg == secondMsg => " + (firstMsg == secondMsg));
+            Console.WriteLine("firstMsg != secondMsg => " + (firstMsg != secondMsg));
+
+            Console.WriteLine("");
+
             Console.WriteLine("Modeling end");
 
             Console.ReadKey();
