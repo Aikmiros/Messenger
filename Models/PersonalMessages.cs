@@ -6,21 +6,10 @@ namespace Messenger.Models
 {
     class PersonalMessages : Chat
     {
-        public override List<int> Participants
+        public PersonalMessages(UserAccount A, UserAccount B) : base()
         {
-            get { return Participants; }
-            set
-            {
-                if (Participants.Count == 2) 
-                {
-                    Participants = value;
-                }
-
-            }
-        }
-        public override void openChat(UserAccount user, bool open)
-        {
-            opened = false;
+            participants.Add(A.Id);
+            participants.Add(B.Id);
         }
         public override bool sendMessage(UserAccount user, string messageBody)
         {
