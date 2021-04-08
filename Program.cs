@@ -14,8 +14,29 @@ namespace Messenger {
 
             new UserAccount("System", "admin");
 
-            UserAccount user = new UserAccount();
-            GroupChat chat = new GroupChat();
+            Console.WriteLine("Upcast, downcast");
+
+            Console.WriteLine("");
+
+            GroupChat up = new Channel();
+
+            Console.WriteLine("GroupChat up = new Channel();");
+
+            Chat up2 = up;
+
+            Console.WriteLine("Chat up2 = up;");
+            Console.WriteLine("up2 => " + up2);
+
+            GroupChat down = (GroupChat)up2;
+
+            Console.WriteLine("GroupChat down = (GroupChat)up2;");
+
+            Channel down2 = (Channel)up2;
+
+            Console.WriteLine("Channel down2 = (Channel)up2;");
+            Console.WriteLine("down2 => " + up2);
+
+            Console.WriteLine("");
 
             Console.WriteLine("Modeling end");
 
