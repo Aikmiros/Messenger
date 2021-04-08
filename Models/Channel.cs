@@ -6,7 +6,7 @@ namespace Messenger
 {
     public class Channel : GroupChat
     {
-        public Channel(int userId, string name) : base() { }
+        public Channel(int userId, string name) : base(userId, name) { }
         public override bool sendMessage(UserAccount user, string messageBody)
         {
             if (user.Id == admin)

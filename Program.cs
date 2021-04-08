@@ -12,13 +12,13 @@ namespace Messenger {
             Console.WriteLine("Modeling start");
             Console.WriteLine("");
 
-            new UserAccount("System", "admin");
+            UserAccount admin = new UserAccount("System", "admin");
 
             Console.WriteLine("Upcast, downcast");
 
             Console.WriteLine("");
 
-            GroupChat up = new Channel();
+            GroupChat up = new Channel(admin.Id, "Channel1");
 
             Console.WriteLine("GroupChat up = new Channel();");
 
