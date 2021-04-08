@@ -1,25 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="Messenger.ChatRoom">
-    <Position X="0.5" Y="1.5" Width="3.5" />
+  <Class Name="Messenger.Chat">
+    <Position X="0.5" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAQAAAAQAAQBGCgwSAAEEMIpABACBAAQAAAgE=</HashCode>
-      <FileName>Models\ChatRoom.cs</FileName>
+      <HashCode>AIACAAAAAAAAAQAAAAAAoAAgEEAIIhABAKAAAQAAAgE=</HashCode>
+      <FileName>Models\Chat.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Messenger.Message">
-    <Position X="4.5" Y="0.5" Width="3.25" />
+  <Class Name="Messenger.GroupChat">
+    <Position X="4.5" Y="3" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAoQQgAAEMAAAAAKAAAAAAAAA=</HashCode>
+      <FileName>Models\GroupChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Messenger.TextMessage" BaseTypeListCollapsed="true">
+    <Position X="9" Y="3" Width="4" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAwBCBIgAAAQAAAIIABBAAAABQAiA=</HashCode>
-      <FileName>Models\Message.cs</FileName>
+      <FileName>Models\TextMessage.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.183" Collapsed="true" />
   </Class>
   <Class Name="Messenger.UserAccount">
-    <Position X="8.25" Y="1.5" Width="4" />
+    <Position X="13.25" Y="0.5" Width="4" />
     <TypeIdentifier>
-      <HashCode>IAQDIICEAQAAAAAAQQGEIgEAAABQAgIGAAAAAgAAEgQ=</HashCode>
+      <HashCode>IAQDAICEASAAAAAAQQGEIgEAQABQAAIGAAAAAgAAGgQ=</HashCode>
       <FileName>Models\UserAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Interface Name="Messenger.IMessage">
+    <Position X="9.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABBAAAABAAAA=</HashCode>
+      <FileName>Models\IMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
