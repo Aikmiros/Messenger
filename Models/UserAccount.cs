@@ -108,13 +108,13 @@ namespace Messenger {
         }
 
         public static UserAccount operator+ (UserAccount user, GroupChat chat) {
-            chat.addParticipant(user.id);
+            chat.addParticipant(user, user.id);
             user.GroupChats.Add(chat.Id);
             return user;
         }
 
         public static UserAccount operator- (UserAccount user, GroupChat chat) {
-            chat.deleteParticipant(user.id);
+            chat.deleteParticipant(user, user.id);
             user.GroupChats.Remove(chat.Id);
             return user;
         }

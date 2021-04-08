@@ -10,7 +10,7 @@ namespace Messenger
         private static int _nextRoomId = 0;
 
         protected List<int> participants;
-        protected List<Message> messages;
+        internal List<IMessage> messages;
         protected int id;
         protected bool opened;
 
@@ -19,7 +19,7 @@ namespace Messenger
 
         public virtual List<int> Participants { get; }
 
-        public List<Message> Messages {
+        internal List<IMessage> Messages {
             get { return messages; }
         }
 
@@ -36,7 +36,7 @@ namespace Messenger
         public Chat()
         {
             id = _nextRoomId++;
-            messages = new List<Message>();
+            messages = new List<IMessage>();
             participants = new List<int>();
             chatRooms[id] = this;
             opened = false;
@@ -45,7 +45,7 @@ namespace Messenger
         public Chat(Chat from) {
             id = _nextRoomId++;
             participants = from.Participants.Count == 0 ? new List<int>() : new List<int>(from.Participants);
-            messages = new List<Message>();
+            messages = new List<IMessage>();
             chatRooms[id] = this;
             opened = false;
         }

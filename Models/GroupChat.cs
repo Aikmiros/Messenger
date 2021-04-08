@@ -61,7 +61,7 @@ namespace Messenger {
         }
 
         public override bool sendMessage(UserAccount user, string messageBody) {
-            Message message = new Message(user.Id, messageBody);
+            IMessage message = new TextMessage(user.Id, messageBody);
             messages.Add(message);
             return true;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Messenger {
-	public class Message
+	public class TextMessage : IMessage
 	{
 		private string body;
 		private int authorId;
@@ -31,21 +31,21 @@ namespace Messenger {
 
 		public DateTime Datetime { get; }
 
-		public Message() {
+		public TextMessage() {
 			body = "It's first message to say hello to you";
 			authorId = 0;
 			datetime = DateTime.UtcNow;
 			//Console.WriteLine("Message created constructor default");
 		}
 
-		public Message(int author, string body) {
+		public TextMessage(int author, string body) {
 			this.body = body;
 			authorId = author;
 			datetime = DateTime.UtcNow;
 			//Console.WriteLine("Message created constructor initialization");
 		}
 
-		public Message(Message savedMessage) {
+		public TextMessage(TextMessage savedMessage) {
 			body = savedMessage.body;
 			authorId = savedMessage.authorId;
 			datetime = savedMessage.datetime;
@@ -53,54 +53,54 @@ namespace Messenger {
 		}
 
 		//Унарні оператори
-		public static bool operator !(Message A)
+		public static bool operator !(TextMessage A)
 		{
 			return A.body.Length == 0;
 		}
 
-		public static Message operator ++(Message A)
+		public static TextMessage operator ++(TextMessage A)
         {
 			if (A.authorId <= 0) A.authorId++;
 			return A;
         }
 
-		public static Message operator --(Message A)
+		public static TextMessage operator --(TextMessage A)
         {
 			if (A.authorId > 0) A.authorId--;
 			return A;
         }
 		//Бінарні оператори
-		public static Message operator +(Message A, string body)
+		public static TextMessage operator +(TextMessage A, string body)
 		{
 			A.body += body;
 			return A;
 		}
 
-		public static Message operator +(Message A, Message B)
+		public static TextMessage operator +(TextMessage A, TextMessage B)
         {
-			Message C = new Message();
+			TextMessage C = new TextMessage();
 			C.body = A.body + B.body;
 			return C;
         }
 	
 		//Оператори порівняння
-		public static bool operator >(Message A, Message B)
+		public static bool operator >(TextMessage A, TextMessage B)
 		{
 			if (A.body.Length > B.body.Length) return true;
 			else return false;
 		}
-		public static bool operator <(Message A, Message B)
+		public static bool operator <(TextMessage A, TextMessage B)
 		{
 			if (A.body.Length < B.body.Length) return true;
 			else return false;
 		}
 
-		public static bool operator ==(Message A, Message B)
+		public static bool operator ==(TextMessage A, TextMessage B)
 		{
 			if (A.body == B.body) return true;
 			else return false;
 		}
-		public static bool operator !=(Message A, Message B)
+		public static bool operator !=(TextMessage A, TextMessage B)
 		{
 			if (A.body != B.body) return true;
 			else return false;
@@ -108,9 +108,9 @@ namespace Messenger {
 
 		public override bool Equals(Object obj)
 		{
-			if (obj == null || !(obj is Message))
+			if (obj == null || !(obj is TextMessage))
 				return false;
-			else return body == ((Message)obj).body;
+			else return body == ((TextMessage)obj).body;
 		}
 		public override int GetHashCode()
 		{
