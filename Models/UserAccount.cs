@@ -52,7 +52,6 @@ namespace Messenger {
             status = "";
             GroupChats = new List<int>();
             users[id] = this;
-            //Console.WriteLine("UserAccount created constructor default");
         }
 
         // constructor inizialization
@@ -65,7 +64,6 @@ namespace Messenger {
             GroupChats = new List<int>();
             users[id] = this;
             createGroupChat("Hello world");
-            //Console.WriteLine("UserAccount created constructor inizialization");
         }
 
         // constructor copy
@@ -77,7 +75,6 @@ namespace Messenger {
             rank = oldUser.rank;
             GroupChats = oldUser.GroupChats;
             users[id] = this;
-            //Console.WriteLine("UserAccount created constructor copy");
         }
 
         public static UserAccount findUser(int id) {
