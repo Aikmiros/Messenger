@@ -36,10 +36,32 @@ namespace Messenger {
             Console.WriteLine("Channel down2 = (Channel)up2;");
             Console.WriteLine("down2 => " + up2);
 
+
+            UserAccount user = new UserAccount();
+            UserAccount user2 = new UserAccount();
+            GroupChat chat = new GroupChat();
+
+            Chat upChannel = new Channel(user.Id, "upcast channel");
+            Chat upPersonal = new PersonalMessages(user, user2);
+            IMessage upMessage = new TextMessage(user.Id, "upcast text message");
+
             Console.WriteLine("");
+            Console.WriteLine("Upcast, downcast using operator as");
+            Console.WriteLine("Upcast");
+            Console.WriteLine(upChannel.GetType());
+            Console.WriteLine(upPersonal.GetType());
 
+            Console.WriteLine("");
+            Console.WriteLine("Downcast");
+            Chat downChannel = upChannel as GroupChat;
+            if (downChannel != null) Console.WriteLine("Success downcast from Channel to GroupChat");
+            Chat downGroupChat = downChannel as Chat;
+            if (downGroupChat != null) Console.WriteLine("Success downcast from GroupChat to Chat");
+            Chat downPersonal = upPersonal as Chat;
+            if (downPersonal != null) Console.WriteLine("Success downcast from PersonalMessages to Chat");
+
+            Console.WriteLine("");
             Console.WriteLine("Modeling end");
-
             Console.ReadKey();
         }
     }
