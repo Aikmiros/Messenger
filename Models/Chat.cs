@@ -23,16 +23,6 @@ namespace Messenger
             get { return messages; }
         }
 
-        //public Chat()
-        //{
-        //    id = _nextRoomId++;
-        //    chatRooms[id] = this;
-        //    messages = new List<Message>();
-        //    participants = new List<int>();
-        //    messages.Add(new Message());
-        //}
-
-        //public Chat(int userId, string name)
         public Chat()
         {
             id = _nextRoomId++;
@@ -67,26 +57,15 @@ namespace Messenger
             }
         }
 
-        //Следующие методы при надобности перезаписвыаем
-
-        //Первый аргумент - пользователь, который хочет добавить другого пользователя
-        //В методе проверяем, есть ли у него право это сделать а потом добавляем пользователя если права есть
-        //(GroupChat, Channel - добавлять может только админ, PersonalMessages  - никто)
         public virtual void addParticipant(UserAccount user, int userId) { }
         public virtual void deleteParticipant(UserAccount user, int userId) { }
 
-        //Управление доступом к чату. Если чат открыт, в него можно входить с помощью joinChat()
-        //Открывает чат в GroupChat и Channel админ, в PersonalMessages - никто
         public virtual void openChat(UserAccount user, bool open) { }
 
-        //Метод, в который передаём пользователя, который хочет отправить сообщение и само сообщение,
-        //проверяем есть ли у пользователя разрешение его отправить(например, в канале только автор может это делать), и создаем сообщение
         public abstract bool sendMessage(UserAccount user, string messageBody);
 
-        //То же самое с удалением
         public abstract bool removeMessage(UserAccount user, int messageId);
 
-        //Тоже проверяем, кто хочет очистить историю(GroupChat, channel - админ, PersonalMessages - не проверяем)
         public virtual void clearHistory(UserAccount user) {
             messages.Clear();
         }

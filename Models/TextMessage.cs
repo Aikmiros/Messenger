@@ -33,21 +33,18 @@ namespace Messenger {
 			body = "It's first message to say hello to you";
 			authorId = 0;
 			datetime = DateTime.UtcNow;
-			//Console.WriteLine("Message created constructor default");
 		}
 
 		public TextMessage(int author, string body) {
 			this.body = body;
 			authorId = author;
 			datetime = DateTime.UtcNow;
-			//Console.WriteLine("Message created constructor initialization");
 		}
 
 		public TextMessage(TextMessage savedMessage) {
 			body = savedMessage.body;
 			authorId = savedMessage.authorId;
 			datetime = savedMessage.datetime;
-			//Console.WriteLine("Message created constructor copy");
 		}
 
 		//Унарні оператори
