@@ -17,7 +17,7 @@ namespace Messenger
         public int Id { get { return id; } }
         public bool Opened { get; }
 
-        public virtual List<int> Participants { get; }
+        public virtual List<int> Participants { get; set; }
 
         internal List<IMessage> Messages {
             get { return messages; }

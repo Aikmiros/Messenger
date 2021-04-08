@@ -6,6 +6,18 @@ namespace Messenger.Models
 {
     class PersonalMessages : Chat
     {
+        public override List<int> Participants
+        {
+            get { return Participants; }
+            set
+            {
+                if (Participants.Count == 2) 
+                {
+                    Participants = value;
+                }
+
+            }
+        }
         public override void openChat(UserAccount user, bool open)
         {
             opened = false;
