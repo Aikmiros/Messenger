@@ -21,7 +21,12 @@ namespace Messenger {
             Console.WriteLine("Змiнення iменi");
             Console.WriteLine("username = " + user1.Username);
 
-            
+            Console.WriteLine("Додавання нового делегату");
+            Console.WriteLine("status = " + user1.Status);
+            user1.addFieldToChange("status", (info) => user1.Status = info);
+            user1.changeUserInfo("status", "newStatus");
+            Console.WriteLine("Змiнення статусу");
+            Console.WriteLine("status = " + user1.Status);
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");

@@ -83,7 +83,10 @@ namespace Messenger {
             _fields[field](info);
         }
 
-
+        public void addFieldToChange(string field, FieldDelegate body) {
+            if (_fields.ContainsKey(field)) throw new ArgumentException();
+            _fields.Add(field, body);
+        }
 
 
         // constructor copy
