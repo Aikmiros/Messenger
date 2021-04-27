@@ -14,7 +14,7 @@ namespace Messenger {
 
             UserAccount admin = new UserAccount("System", "admin");
 
-            Console.WriteLine("Викристання делегату для класу UserAccount");
+            Console.WriteLine("Викoристання делегату для класу UserAccount");
             UserAccount user1 = new UserAccount("user1", "password");
             Console.WriteLine("username = " + user1.Username);
             user1.changeUserInfo("username", "newUser2");
@@ -23,14 +23,31 @@ namespace Messenger {
 
             Console.WriteLine("Додавання нового делегату");
             Console.WriteLine("status = " + user1.Status);
-            user1.addFieldToChange("status", (info) => user1.Status = info);
+            user1.addFieldToChange("status", (info) => { user1.Status = info; });
             user1.changeUserInfo("status", "newStatus");
             Console.WriteLine("Змiнення статусу");
             Console.WriteLine("status = " + user1.Status);
 
+
+            Console.WriteLine("");
+            Console.WriteLine("Подiя для класу GroupChat");
+            GroupChat chat = new GroupChat(user1.Id, "NewChat");
+            chat.ParticipantsChanged += new GroupChat.EventHandler(ChatParticipantsChanged);
+            chat.ParticipantsChanged += new GroupChat.EventHandler(delegate { Console.WriteLine("Event done"); });
+            UserAccount user2 = new UserAccount("user2", "password");
+            chat.addParticipant(user1, user2.Id);
+            chat.ParticipantsChanged -= ChatParticipantsChanged;
+            chat.deleteParticipant(user1, user2.Id);
+
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
             Console.ReadKey();
+        }
+
+        public static void ChatParticipantsChanged(Object sender, string message) {
+            GroupChat chat = (GroupChat)sender;
+            chat.sendMessage(UserAccount.findUser(chat.Admin), message);
+            Console.WriteLine(message);
         }
     }
 }

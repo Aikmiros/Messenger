@@ -7,6 +7,11 @@ namespace Messenger {
         protected string name;
         protected int admin;
 
+        public delegate void EventHandler(Object sender, string message);
+        public event EventHandler ParticipantsChanged;
+
+
+
         public string Name {
             get { return name; }
             set {
@@ -45,6 +50,7 @@ namespace Messenger {
         public override void addParticipant(UserAccount user, int userId) {
             if (user.Id == admin && !participants.Contains(userId)) {
                 participants.Add(userId);
+                ParticipantsChanged(this, "Add participant " + UserAccount.findUser(userId).Username);
             }
         }
 
@@ -57,6 +63,7 @@ namespace Messenger {
         public override void deleteParticipant(UserAccount user, int userId) {
             if (user.Id == admin || userId == user.Id) {
                 participants.Remove(userId);
+                ParticipantsChanged(this, "Delete participant " + UserAccount.findUser(userId).Username);
             }
         }
 
