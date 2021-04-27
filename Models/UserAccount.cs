@@ -42,7 +42,7 @@ namespace Messenger {
         }
 
         public string Status { get; set; }
-        
+
         // constructor default
         public UserAccount() {
             id = _nextUserId++;
@@ -53,6 +53,7 @@ namespace Messenger {
             GroupChats = new List<int>();
             users[id] = this;
         }
+        
 
         // constructor inizialization
         public UserAccount(string username, string password) {
@@ -63,8 +64,27 @@ namespace Messenger {
             id = _nextUserId++;
             GroupChats = new List<int>();
             users[id] = this;
+
+            _fields = new Dictionary<string, FieldDelegate> {
+                {"username", (info) => this.username = info },
+                {"password", (info) => this.password = info }
+            };
+
             createGroupChat("Hello world");
         }
+
+
+        public delegate void FieldDelegate(string info);
+        public Dictionary<string, FieldDelegate> _fields;
+
+
+        public void changeUserInfo(string field, string info) {
+            if (!_fields.ContainsKey(field)) throw new ArgumentException();
+            _fields[field](info);
+        }
+
+
+
 
         // constructor copy
         public UserAccount(UserAccount oldUser) {
@@ -89,7 +109,7 @@ namespace Messenger {
 
         //Унарні оператори
         public static UserAccount operator ++(UserAccount user) {
-            if(user.rank < 10) user.rank++;
+            if (user.rank < 10) user.rank++;
             return user;
         }
 
@@ -99,18 +119,18 @@ namespace Messenger {
         }
 
         //Бінарні оператори
-        public static UserAccount operator+ (UserAccount user, string status) {
+        public static UserAccount operator +(UserAccount user, string status) {
             user.Status += status;
             return user;
         }
 
-        public static UserAccount operator+ (UserAccount user, GroupChat chat) {
+        public static UserAccount operator +(UserAccount user, GroupChat chat) {
             chat.addParticipant(user, user.id);
             user.GroupChats.Add(chat.Id);
             return user;
         }
 
-        public static UserAccount operator- (UserAccount user, GroupChat chat) {
+        public static UserAccount operator -(UserAccount user, GroupChat chat) {
             chat.deleteParticipant(user, user.id);
             user.GroupChats.Remove(chat.Id);
             return user;
@@ -133,8 +153,7 @@ namespace Messenger {
         public void deleteUser() { }
         public void showGroupChats() { }
         public void showUserInfo() { }
-        public void changePassword(string newPassword) { }
-        public void changeUsername(string newUsername) { }
-        public void changeStatus(string newStatus) { }
+
+       
     }
 }
