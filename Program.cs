@@ -40,8 +40,14 @@ namespace Messenger {
             chat.deleteParticipant(user1, user2.Id);
 
             Console.WriteLine("");
+            Console.WriteLine("Лямбда вираз");
+            TextMessage Hellomsg = new TextMessage();
+            Hellomsg.msg("Виклик"); //виклик лямбда-виразу
+
+            Console.WriteLine("");
             Console.WriteLine("Modeling end");
             Console.ReadKey();
+
         }
 
         public static void ChatParticipantsChanged(Object sender, string message) {
