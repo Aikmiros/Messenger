@@ -60,7 +60,7 @@ namespace Messenger {
         }
 
         public override void deleteParticipant(UserAccount user, int userId) {
-            if (user.Id == admin || userId == user.Id) {
+            if (user.Id == admin) {
                 UserAccount userToAdd = UserAccount.findUser(userId);
                 if (userToAdd == null || !removeUser(userToAdd)) return;
                 ParticipantsChanged?.Invoke(this, "Delete participant " + userToAdd.Username);

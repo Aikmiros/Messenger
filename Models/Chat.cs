@@ -17,7 +17,8 @@ namespace Messenger
         public enum ChatEvents
         {
             delete,
-            create
+            create,
+            message
         }
 
         public delegate void Notification(Chat chat, ChatEvents chatEvent);
@@ -41,12 +42,8 @@ namespace Messenger
             opened = false;
         }
 
-        public Chat(Chat from) {
-            id = _nextRoomId++;
+        public Chat(Chat from) : this() {
             participants = from.Participants.Count == 0 ? new List<int>() : new List<int>(from.Participants);
-            messages = new List<IMessage>();
-            chatRooms[id] = this;
-            opened = false;
         }
 
         public static void deleteRoom(int id) {

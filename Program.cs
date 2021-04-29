@@ -48,6 +48,9 @@ namespace Messenger {
             chat.addParticipant(user1, user2.Id);
             chat.addParticipant(user1, new UserAccount("user3", "password").Id);
 
+            Console.WriteLine("");
+            Console.WriteLine("Подiя для класу Chat");
+
             Chat.deleteRoom(chat.Id);
 
             Console.WriteLine("");
