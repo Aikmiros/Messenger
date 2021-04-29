@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Messenger
 {
-    class PersonalMessages : Chat
+    public class PersonalMessages : Chat
     {
         public PersonalMessages(UserAccount A, UserAccount B) : base()
         {

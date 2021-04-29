@@ -44,8 +44,14 @@ namespace Messenger {
             Chat.deleteRoom(chat.Id);
 
             Console.WriteLine("");
+            Console.WriteLine("Лямбда вираз");
+            TextMessage Hellomsg = new TextMessage();
+            Hellomsg.msg("Виклик"); //виклик лямбда-виразу
+
+            Console.WriteLine("");
             Console.WriteLine("Modeling end");
             Console.ReadKey();
+
         }
 
         public static void ChatParticipantsChanged(Object sender, string message) {

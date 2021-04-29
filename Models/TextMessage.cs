@@ -7,6 +7,10 @@ namespace Messenger {
 		private int authorId;
 		private DateTime datetime;
 
+		public delegate void Msg(string x); //делегат Msg
+
+		public Msg msg = (x) => Console.WriteLine(x + " лямбда виразу"); //Лямбда-вираз
+
 		public string Body
 		{
 			get { return body; }
@@ -17,11 +21,11 @@ namespace Messenger {
 			}
 		}
 
-		public int AuthorId 
-		{ 
+		public int AuthorId
+		{
 			get { return authorId; }
-			set 
-			{ 
+			set
+			{
 				if (value >= 0) authorId = value;
 				else Console.WriteLine("Автора повiдомлення не iснує");
 			}
@@ -54,16 +58,16 @@ namespace Messenger {
 		}
 
 		public static TextMessage operator ++(TextMessage A)
-        {
+		{
 			if (A.authorId <= 0) A.authorId++;
 			return A;
-        }
+		}
 
 		public static TextMessage operator --(TextMessage A)
-        {
+		{
 			if (A.authorId > 0) A.authorId--;
 			return A;
-        }
+		}
 		//Бінарні оператори
 		public static TextMessage operator +(TextMessage A, string body)
 		{
@@ -72,11 +76,11 @@ namespace Messenger {
 		}
 
 		public static TextMessage operator +(TextMessage A, TextMessage B)
-        {
+		{
 			TextMessage C = new TextMessage();
 			C.body = A.body + B.body;
 			return C;
-        }
+		}
 	
 		//Оператори порівняння
 		public static bool operator >(TextMessage A, TextMessage B)
