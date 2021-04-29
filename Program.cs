@@ -54,7 +54,7 @@ namespace Messenger {
             Chat.deleteRoom(chat.Id);
 
             Console.WriteLine("");
-            Console.WriteLine("Виклик лямбда-виразу");
+            Console.WriteLine("Виклик лямбда-оператора");
             Console.WriteLine("");
             chat.ChatNotification += (Chat chat, Chat.ChatEvents chatEvent) =>
             {
