@@ -12,8 +12,6 @@ namespace Messenger {
             Console.WriteLine("Modeling start");
             Console.WriteLine("");
 
-            UserAccount admin = new UserAccount("System", "admin");
-
             Console.WriteLine("Викoристання делегату для класу UserAccount");
             UserAccount user1 = new UserAccount("user1", "password");
             Console.WriteLine("username = " + user1.Username);
@@ -39,6 +37,12 @@ namespace Messenger {
             chat.ParticipantsChanged -= ChatParticipantsChanged;
             chat.deleteParticipant(user1, user2.Id);
 
+            chat.addParticipant(user1, user1.Id);
+            chat.addParticipant(user1, user2.Id);
+            chat.addParticipant(user1, new UserAccount("user3", "password").Id);
+
+            Chat.deleteRoom(chat.Id);
+
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
             Console.ReadKey();
@@ -46,8 +50,9 @@ namespace Messenger {
 
         public static void ChatParticipantsChanged(Object sender, string message) {
             GroupChat chat = (GroupChat)sender;
-            chat.sendMessage(UserAccount.findUser(chat.Admin), message);
+            chat.sendMessage(UserAccount.System, message);
             Console.WriteLine(message);
         }
+
     }
 }

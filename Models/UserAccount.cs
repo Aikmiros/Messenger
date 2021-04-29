@@ -15,6 +15,13 @@ namespace Messenger {
         private int rank;
         public List<int> GroupChats;
 
+        private readonly static UserAccount system = new UserAccount("System", "admin");
+
+        public static UserAccount System
+        {
+            get { return system; }
+        }
+
         public int Id {
             get { return id; }
         }
@@ -157,6 +164,13 @@ namespace Messenger {
         public void showGroupChats() { }
         public void showUserInfo() { }
 
-       
+        public void NotifyUser(Chat chat, Chat.ChatEvents chatEvent)
+        {
+            if(chatEvent == Chat.ChatEvents.delete)
+            {
+                string chatName = chat is GroupChat ? ((GroupChat)chat).Name : "chat" + chat.Id;
+                Console.WriteLine("Notification to user" + id + ": " + chatName + " was deleted");
+            }
+        }
     }
 }

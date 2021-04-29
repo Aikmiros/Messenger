@@ -10,8 +10,6 @@ namespace Messenger {
         public delegate void EventHandler(Object sender, string message);
         public event EventHandler ParticipantsChanged;
 
-
-
         public string Name {
             get { return name; }
             set {
@@ -48,9 +46,10 @@ namespace Messenger {
         }
 
         public override void addParticipant(UserAccount user, int userId) {
-            if (user.Id == admin && !participants.Contains(userId)) {
-                participants.Add(userId);
-                ParticipantsChanged(this, "Add participant " + UserAccount.findUser(userId).Username);
+            if (user.Id == admin) {
+                UserAccount userToAdd = UserAccount.findUser(userId);
+                if (userToAdd == null || !addUser(userToAdd)) return;
+                ParticipantsChanged(this, "Add participant " + userToAdd.Username);
             }
         }
 
@@ -62,8 +61,9 @@ namespace Messenger {
 
         public override void deleteParticipant(UserAccount user, int userId) {
             if (user.Id == admin || userId == user.Id) {
-                participants.Remove(userId);
-                ParticipantsChanged(this, "Delete participant " + UserAccount.findUser(userId).Username);
+                UserAccount userToAdd = UserAccount.findUser(userId);
+                if (userToAdd == null || !removeUser(userToAdd)) return;
+                ParticipantsChanged(this, "Delete participant " + userToAdd.Username);
             }
         }
 

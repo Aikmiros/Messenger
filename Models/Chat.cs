@@ -14,6 +14,15 @@ namespace Messenger
         protected int id;
         protected bool opened;
 
+        public enum ChatEvents
+        {
+            delete,
+            create
+        }
+
+        public delegate void Notification(Chat chat, ChatEvents chatEvent);
+        public event Notification ChatNotification;
+
         public int Id { get { return id; } }
         public bool Opened { get; }
 
@@ -41,6 +50,7 @@ namespace Messenger
         }
 
         public static void deleteRoom(int id) {
+            chatRooms[id].OnDestroy();
             chatRooms[id] = null;
         }
 
@@ -51,9 +61,25 @@ namespace Messenger
             else return null;
         }
 
+        protected bool addUser(UserAccount user)
+        {
+            if (participants.Contains(user.Id)) return false;
+            participants.Add(user.Id);
+            ChatNotification += user.NotifyUser;
+            return true;
+        }
+
+        protected bool removeUser(UserAccount user)
+        {
+            if (!participants.Contains(user.Id)) return false;
+            participants.Remove(user.Id);
+            ChatNotification -= user.NotifyUser;
+            return true;
+        }
+
         public void joinChat(UserAccount user) {
             if (opened) {
-                participants.Add(user.Id);
+                addUser(user);
             }
         }
 
@@ -74,5 +100,9 @@ namespace Messenger
             messages.ForEach(msg => msg.show());
         }
 
+        protected virtual void OnDestroy()
+        {
+            ChatNotification.Invoke(this, ChatEvents.delete);
+        }
     }
 }
