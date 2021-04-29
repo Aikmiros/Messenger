@@ -49,7 +49,7 @@ namespace Messenger {
             if (user.Id == admin) {
                 UserAccount userToAdd = UserAccount.findUser(userId);
                 if (userToAdd == null || !addUser(userToAdd)) return;
-                ParticipantsChanged(this, "Add participant " + userToAdd.Username);
+                ParticipantsChanged?.Invoke(this, "Add participant " + userToAdd.Username);
             }
         }
 
@@ -63,7 +63,7 @@ namespace Messenger {
             if (user.Id == admin || userId == user.Id) {
                 UserAccount userToAdd = UserAccount.findUser(userId);
                 if (userToAdd == null || !removeUser(userToAdd)) return;
-                ParticipantsChanged(this, "Delete participant " + userToAdd.Username);
+                ParticipantsChanged?.Invoke(this, "Delete participant " + userToAdd.Username);
             }
         }
 

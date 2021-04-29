@@ -102,7 +102,7 @@ namespace Messenger
 
         protected virtual void OnDestroy()
         {
-            ChatNotification.Invoke(this, ChatEvents.delete);
+            ChatNotification?.Invoke(this, ChatEvents.delete);
         }
     }
 }

@@ -30,12 +30,19 @@ namespace Messenger {
             Console.WriteLine("");
             Console.WriteLine("Подiя для класу GroupChat");
             GroupChat chat = new GroupChat(user1.Id, "NewChat");
-            chat.ParticipantsChanged += new GroupChat.EventHandler(ChatParticipantsChanged);
-            chat.ParticipantsChanged += new GroupChat.EventHandler(delegate { Console.WriteLine("Event done"); });
+
+            GroupChat.EventHandler listener1 = new GroupChat.EventHandler(ChatParticipantsChanged);
+            GroupChat.EventHandler listener2 = new GroupChat.EventHandler(delegate { Console.WriteLine("Event done"); });
+
+            chat.ParticipantsChanged += listener1;
+            chat.ParticipantsChanged += listener2;
             UserAccount user2 = new UserAccount("user2", "password");
             chat.addParticipant(user1, user2.Id);
             chat.ParticipantsChanged -= ChatParticipantsChanged;
             chat.deleteParticipant(user1, user2.Id);
+
+            chat.ParticipantsChanged -= listener1;
+            chat.ParticipantsChanged -= listener2;
 
             chat.addParticipant(user1, user1.Id);
             chat.addParticipant(user1, user2.Id);
