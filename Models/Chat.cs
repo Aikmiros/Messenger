@@ -17,7 +17,6 @@ namespace Messenger
         public enum ChatEvents
         {
             delete,
-            create,
             message
         }
 

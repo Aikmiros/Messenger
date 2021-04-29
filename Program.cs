@@ -55,15 +55,16 @@ namespace Messenger {
 
             Console.WriteLine("");
             Console.WriteLine("Виклик лямбда-оператора");
-            Console.WriteLine("");
-            chat.ChatNotification += (Chat chat, Chat.ChatEvents chatEvent) =>
-            {
-                if(chatEvent == Chat.ChatEvents.message)
+
+            chat.ChatNotification += (Chat chat, Chat.ChatEvents chatEvent) => {
+                if (chatEvent == Chat.ChatEvents.message)
                 {
                     TextMessage msg = chat.messages[chat.messages.Count - 1] as TextMessage;
                     if (msg != null) msg.show();
                 }
             };
+
+            chat.sendMessage(user1, "NewMessageText");
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
