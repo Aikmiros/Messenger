@@ -54,9 +54,16 @@ namespace Messenger {
             Chat.deleteRoom(chat.Id);
 
             Console.WriteLine("");
-            Console.WriteLine("Лямбда вираз");
-            TextMessage Hellomsg = new TextMessage();
-            Hellomsg.msg("Виклик"); //виклик лямбда-виразу
+            Console.WriteLine("Виклик лямбда-виразу");
+            Console.WriteLine("");
+            chat.ChatNotification += (Chat chat, Chat.ChatEvents chatEvent) =>
+            {
+                if(chatEvent == Chat.ChatEvents.message)
+                {
+                    TextMessage msg = chat.messages[chat.messages.Count - 1] as TextMessage;
+                    if (msg != null) msg.show();
+                }
+            };
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
