@@ -85,7 +85,10 @@ namespace Messenger
 
         public virtual void openChat(UserAccount user, bool open) { }
 
-        public abstract bool sendMessage(UserAccount user, string messageBody);
+        public virtual bool sendMessage(UserAccount user, string messageBody) {
+            ChatNotification?.Invoke(this, ChatEvents.message);
+            return true;
+        }
 
         public abstract bool removeMessage(UserAccount user, int messageId);
 

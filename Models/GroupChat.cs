@@ -70,6 +70,7 @@ namespace Messenger {
         public override bool sendMessage(UserAccount user, string messageBody) {
             IMessage message = new TextMessage(user.Id, messageBody);
             messages.Add(message);
+            base.sendMessage(user, messageBody);
             return true;
         }
 

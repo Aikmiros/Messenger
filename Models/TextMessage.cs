@@ -7,10 +7,6 @@ namespace Messenger {
 		private int authorId;
 		private DateTime datetime;
 
-		public delegate void Msg(string x); //делегат Msg
-
-		public Msg msg = (x) => Console.WriteLine(x + " лямбда виразу"); //Лямбда-вираз
-
 		public string Body
 		{
 			get { return body; }
@@ -91,17 +87,6 @@ namespace Messenger {
 		public static bool operator <(TextMessage A, TextMessage B)
 		{
 			if (A.body.Length < B.body.Length) return true;
-			else return false;
-		}
-
-		public static bool operator ==(TextMessage A, TextMessage B)
-		{
-			if (A.body == B.body) return true;
-			else return false;
-		}
-		public static bool operator !=(TextMessage A, TextMessage B)
-		{
-			if (A.body != B.body) return true;
 			else return false;
 		}
 

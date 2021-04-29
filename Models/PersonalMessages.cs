@@ -15,6 +15,7 @@ namespace Messenger
         {
             IMessage message = new TextMessage(user.Id, messageBody);
             messages.Add(message);
+            base.sendMessage(user, messageBody);
             return true;
         }
         public override bool removeMessage(UserAccount user, int messageId)
