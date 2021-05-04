@@ -158,7 +158,16 @@ namespace Messenger {
         }
 
 
-        public static void login(string username, string password) { }
+        public static UserAccount login(string username, string password) {
+            foreach (UserAccount u in users) {
+                if (u == null) break;
+                if (u.username == username) {
+                    if (u.password != password) throw new Exception("Wrong password");
+                    return u;
+                } 
+            }
+            throw new UserAuthException("User not found", username);
+        }
 
         public void deleteUser() { }
         public void showGroupChats() { }
@@ -171,6 +180,13 @@ namespace Messenger {
                 string chatName = chat is GroupChat ? ((GroupChat)chat).Name : "chat" + chat.Id;
                 Console.WriteLine("Notification to user" + id + ": " + chatName + " was deleted");
             }
+        }
+    }
+
+    public class UserAuthException : ArgumentException {
+        public string Username { get; }
+        public UserAuthException(string message, string username) : base(message) {
+            Username = username;
         }
     }
 }
