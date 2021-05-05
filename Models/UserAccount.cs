@@ -108,6 +108,8 @@ namespace Messenger {
         }
 
         public static UserAccount findUser(int id) {
+            if (id > users.Length || id < 0) throw new UserFindException("User ID out of range", id);
+            if (users[id] == null) throw new UserFindException("User not found", id);
             return users[id];
         }
 
@@ -157,7 +159,6 @@ namespace Messenger {
             else return false;
         }
 
-
         public static UserAccount login(string username, string password) {
             foreach (UserAccount u in users) {
                 if (u == null) break;
@@ -168,8 +169,13 @@ namespace Messenger {
             }
             throw new UserAuthException("User not found", username);
         }
+        public static void deleteUser(int id)
+        {
+            if (id > users.Length || id < 0) throw new UserFindException("User ID out of range", id);
+            if (users[id] == null) throw new UserFindException("User does not exist", id);
+            users[id] = null;
+        }
 
-        public void deleteUser() { }
         public void showGroupChats() { }
         public void showUserInfo() { }
 
@@ -180,6 +186,15 @@ namespace Messenger {
                 string chatName = chat is GroupChat ? ((GroupChat)chat).Name : "chat" + chat.Id;
                 Console.WriteLine("Notification to user" + id + ": " + chatName + " was deleted");
             }
+        }
+    }
+
+    public class UserFindException : ArgumentException
+    {
+        public int Id { get; }
+        public UserFindException(string message, int id) : base(message)
+        {
+            Id = id;
         }
     }
 

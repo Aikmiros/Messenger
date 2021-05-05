@@ -48,9 +48,84 @@ namespace Messenger {
                 Console.WriteLine(ex.Message);
             }
 
+            Console.WriteLine("\nВиключення, якi можуть виникати при пошуку неiснуючих користувачiв");
+            try {
+                UserAccount user1 = UserAccount.findUser(-10);
+                Console.WriteLine("User found");
+            }
+            catch (UserFindException ex) {
+                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
 
+            try
+            {
+                UserAccount user2 = UserAccount.findUser(15);
+                Console.WriteLine("Users found");
+            }
+            catch (UserFindException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
+            Console.WriteLine("\nУспiшний пошук: ");
+            try {
+                UserAccount user1 = UserAccount.findUser(1);
+                Console.WriteLine("User found: " + user1.Username);
+            }
+            catch (UserFindException ex) {
+                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
 
+            Console.WriteLine("\nВиключення, якi можуть виникати при спробi видалення неiснуючих користувачiв");
+            try {
+                UserAccount.deleteUser(-20);
+                Console.WriteLine("User deleted");
+            }
+            catch (UserFindException ex) {
+                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                UserAccount.deleteUser(25);
+                Console.WriteLine("User deleted");
+            }
+            catch (UserFindException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("\nУспiшне видалення");
+            try
+            {
+                UserAccount.deleteUser(1);
+                Console.WriteLine("User deleted. ID: 1");
+            }
+            catch (UserFindException ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
