@@ -57,7 +57,7 @@ namespace Messenger
                 UserAccount user1 = UserAccount.findUser(-10);
                 Console.WriteLine("User found");
             } catch (UserFindException ex) {
-                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
+                Console.WriteLine($"UserFindException: {ex.Message}. ID: {ex.Id}");
             } catch (ArgumentOutOfRangeException ex) when (ex.HResult < 0) {
                 Console.WriteLine("ArgumentOutOfRangeException: ID mustn't be less than 0");
             } catch (ArgumentOutOfRangeException ex) when (ex.HResult >= 100) {
@@ -70,7 +70,7 @@ namespace Messenger
                 UserAccount user2 = UserAccount.findUser(15);
                 Console.WriteLine("Users found");
             } catch (UserFindException ex) {
-                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
+                Console.WriteLine($"UserFindException: {ex.Message}. ID: {ex.Id}");
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
@@ -160,12 +160,12 @@ namespace Messenger
                     decimal b = arr2[i];
                     try {
                         decimal res = arr1[i] / arr2[i];
-                        Console.WriteLine("{0} / {1} = {2}", a, b, res);
+                        Console.WriteLine($"{a} / {b} = {res}");
                     } catch (DivideByZeroException ex) {
-                        Console.WriteLine("DivideByZeroException: " + ex.Message + " A: " + a + ", B: " + b);
+                        Console.WriteLine($"DivideByZeroException: {ex.Message} A: {a}, B: {b}");
                     }
                 } catch (IndexOutOfRangeException ex) {
-                    Console.WriteLine("IndexOutOfRangeException: " + ex.Message + " Index: " + i);
+                    Console.WriteLine($"IndexOutOfRangeException: {ex.Message} Index: {i}");
                 } catch (Exception ex) {
                     Console.WriteLine("Exception: " + ex.Message);
                 }
