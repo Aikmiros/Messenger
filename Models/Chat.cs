@@ -85,6 +85,8 @@ namespace Messenger
         public virtual void openChat(UserAccount user, bool open) { }
 
         public virtual bool sendMessage(UserAccount user, string messageBody) {
+            if (messageBody == "") throw new ArgumentException("Parameter messageBody is empty");
+            if (messageBody == null) throw new ArgumentNullException("messageBody");
             ChatNotification?.Invoke(this, ChatEvents.message);
             return true;
         }

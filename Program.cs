@@ -49,38 +49,32 @@ namespace Messenger {
             }
 
             Console.WriteLine("\nВиключення, якi можуть виникати при пошуку неiснуючих користувачiв");
+            int id = -10;
             try {
-                UserAccount user1 = UserAccount.findUser(-10);
+                UserAccount user1 = UserAccount.findUser(id);
                 Console.WriteLine("User found");
             }
             catch (UserFindException ex) {
-                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
+            }
+            catch (ArgumentOutOfRangeException) when (id < 0)
+            {
+                Console.WriteLine("ID mustn't be less than 0");
+            }
+            catch (ArgumentOutOfRangeException) when (id >= 100)
+            {
+                Console.WriteLine("ID must be less than 100");
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
-            try
-            {
+            try {
                 UserAccount user2 = UserAccount.findUser(15);
                 Console.WriteLine("Users found");
             }
-            catch (UserFindException ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            Console.WriteLine("\nУспiшний пошук: ");
-            try {
-                UserAccount user1 = UserAccount.findUser(1);
-                Console.WriteLine("User found: " + user1.Username);
-            }
             catch (UserFindException ex) {
-                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -92,51 +86,51 @@ namespace Messenger {
                 Console.WriteLine("User deleted");
             }
             catch (UserFindException ex) {
-                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
-            try
-            {
+            try {
                 UserAccount.deleteUser(25);
                 Console.WriteLine("User deleted");
             }
-            catch (UserFindException ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            catch (UserFindException ex) {
+                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
-            Console.WriteLine("\nУспiшне видалення");
-            try
-            {
-                UserAccount.deleteUser(1);
-                Console.WriteLine("User deleted. ID: 1");
+            Console.WriteLine("\nВиключення, якi можуть виникати при спробi вiдправлення пустого повiдомлення");
+            UserAccount user = new UserAccount();
+            GroupChat chat1 = new GroupChat(user.Id, "Chat1");
+
+            try {
+                chat1.sendMessage(user, "");
             }
-            catch (UserFindException ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message + ". ID: " + ex.Id);
+            catch (ArgumentException ex) {
+                Console.WriteLine("ArgumentException: " + ex.Message);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+            catch (Exception ex) {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+
+            try {
+                chat1.sendMessage(user, null);
+            }
+            catch (ArgumentNullException ex) {
+                Console.WriteLine("ArgumentNullException: " + ex.Message);
+            }
+            catch (Exception ex) {
+                Console.WriteLine("Exception: " + ex.Message);
             }
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
             Console.ReadKey();
 
-        }
-
-        public static void ChatParticipantsChanged(Object sender, string message) {
-            GroupChat chat = (GroupChat)sender;
-            chat.sendMessage(UserAccount.System, message);
-            Console.WriteLine(message);
         }
 
     }
