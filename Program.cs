@@ -145,14 +145,32 @@ namespace Messenger
                 Console.WriteLine("InvalidCastException: " + ex.Message);
             }
 
-
-
-
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
+
+            Console.WriteLine("\nTesting nested try blocks\n");
+
+            decimal[] arr1 = { 100, 25, 10, 35 };
+            decimal[] arr2 = { 4,   5,  0,  7,  5 };
+
+            for (int i = 0; i < 5; i++) {
+                try {
+                    decimal a = arr1[i];
+                    decimal b = arr2[i];
+                    try {
+                        decimal res = arr1[i] / arr2[i];
+                        Console.WriteLine("{0} / {1} = {2}", a, b, res);
+                    } catch (DivideByZeroException ex) {
+                        Console.WriteLine("DivideByZeroException: " + ex.Message + " A: " + a + ", B: " + b);
+                    }
+                } catch (IndexOutOfRangeException ex) {
+                    Console.WriteLine("IndexOutOfRangeException: " + ex.Message + " Index: " + i);
+                } catch (Exception ex) {
+                    Console.WriteLine("Exception: " + ex.Message);
+                }
+            }
+
             Console.ReadKey();
-
         }
-
     }
 }
