@@ -146,9 +146,6 @@ namespace Messenger
                 Console.WriteLine("InvalidCastException: " + ex.Message);
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("Modeling end");
-
             Console.WriteLine("\nTesting nested try blocks\n");
 
             decimal[] arr1 = { 100, 25, 10, 35 };
@@ -171,6 +168,8 @@ namespace Messenger
                 }
             }
 
+            Console.WriteLine("");
+            Console.WriteLine("Modeling end");
             Console.ReadKey();
         }
     }
