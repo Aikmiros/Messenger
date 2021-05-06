@@ -53,16 +53,15 @@ namespace Messenger
             }
 
             Console.WriteLine("\nВиключення, якi можуть виникати при пошуку неiснуючих користувачiв");
-            int id = -10;
             try {
-                UserAccount user1 = UserAccount.findUser(id);
+                UserAccount user1 = UserAccount.findUser(-10);
                 Console.WriteLine("User found");
             } catch (UserFindException ex) {
                 Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
-            } catch (ArgumentOutOfRangeException) when (id < 0) {
-                Console.WriteLine("ID mustn't be less than 0");
-            } catch (ArgumentOutOfRangeException) when (id >= 100) {
-                Console.WriteLine("ID must be less than 100");
+            } catch (ArgumentOutOfRangeException ex) when (ex.HResult < 0) {
+                Console.WriteLine("ArgumentOutOfRangeException: ID mustn't be less than 0");
+            } catch (ArgumentOutOfRangeException ex) when (ex.HResult >= 100) {
+                Console.WriteLine("ArgumentOutOfRangeException: ID must be less than 100");
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
@@ -78,10 +77,12 @@ namespace Messenger
 
             Console.WriteLine("\nВиключення, якi можуть виникати при спробi видалення неiснуючих користувачiв");
             try {
-                UserAccount.deleteUser(-20);
+                UserAccount.deleteUser(120);
                 Console.WriteLine("User deleted");
-            } catch (UserFindException ex) {
-                Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
+            } catch (ArgumentOutOfRangeException ex) when (ex.HResult < 0) {
+                Console.WriteLine("ArgumentOutOfRangeException: ID mustn't be less than 0");
+            } catch (ArgumentOutOfRangeException ex) when (ex.HResult >= 100) {
+                Console.WriteLine("ArgumentOutOfRangeException: ID must be less than 100");
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
