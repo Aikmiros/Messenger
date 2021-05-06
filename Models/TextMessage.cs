@@ -36,6 +36,9 @@ namespace Messenger {
 		}
 
 		public TextMessage(int author, string body) {
+			if (author < 0) throw new ArgumentOutOfRangeException();
+			if (body == null) throw new ArgumentNullException();
+			if (body.Length <= 0) throw new ArgumentException();
 			this.body = body;
 			authorId = author;
 			datetime = DateTime.UtcNow;

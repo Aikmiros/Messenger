@@ -26,6 +26,7 @@ namespace Messenger {
                 Console.WriteLine(ex.Message);
             }
 
+            Console.WriteLine("");
             Console.WriteLine("Некоректне iм'я користувача, генерацiя власного виключення");
             try {
                 UserAccount user1 = UserAccount.login("user", "password");
@@ -37,6 +38,7 @@ namespace Messenger {
                 Console.WriteLine(ex.Message);
             }
 
+            Console.WriteLine("");
             Console.WriteLine("Успiшна авторизацiя");
             try {
                 UserAccount user1 = UserAccount.login("user1", "password");
@@ -126,6 +128,39 @@ namespace Messenger {
             catch (Exception ex) {
                 Console.WriteLine("Exception: " + ex.Message);
             }
+
+            Console.WriteLine("");
+            Console.WriteLine("Системнi виключення");
+            try {
+                new TextMessage(-1, "message");
+            } catch (ArgumentOutOfRangeException ex) {
+                Console.WriteLine("ArgumentOutOfRangeException: " + ex.Message);
+            }
+            try {
+                new TextMessage(0, "");
+            } catch (ArgumentException ex) {
+                Console.WriteLine("ArgumentException: " + ex.Message);
+            }
+            try {
+                new TextMessage(0, null);
+            } catch (ArgumentNullException ex) {
+                Console.WriteLine("ArgumentNullException: " + ex.Message);
+            }
+            try {
+                int[] array = null;
+                array[0] += 3;
+            } catch (NullReferenceException ex) {
+                Console.WriteLine("NullReferenceException: " + ex.Message);
+            }
+            try {
+                Chat gc = new GroupChat();
+                Chat ch = (Channel)gc;
+            } catch (InvalidCastException ex) {
+                Console.WriteLine("InvalidCastException: " + ex.Message);
+            }
+
+
+
 
             Console.WriteLine("");
             Console.WriteLine("Modeling end");
