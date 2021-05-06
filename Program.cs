@@ -56,12 +56,10 @@ namespace Messenger
             try {
                 UserAccount user1 = UserAccount.findUser(-10);
                 Console.WriteLine("User found");
-            } catch (UserFindException ex) {
-                Console.WriteLine($"UserFindException: {ex.Message}. ID: {ex.Id}");
-            } catch (ArgumentOutOfRangeException ex) when (ex.HResult < 0) {
-                Console.WriteLine("ArgumentOutOfRangeException: ID mustn't be less than 0");
-            } catch (ArgumentOutOfRangeException ex) when (ex.HResult >= 100) {
-                Console.WriteLine("ArgumentOutOfRangeException: ID must be less than 100");
+            } catch (UserIdOutOfRangeException ex) when (ex.Id < 0) {
+                Console.WriteLine("UserIdOutOfRangeException: ID mustn't be less than 0");
+            } catch (UserIdOutOfRangeException ex) when (ex.Id >= 100) {
+                Console.WriteLine("UserIdOutOfRangeException: ID must be less than 100");
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
@@ -79,10 +77,10 @@ namespace Messenger
             try {
                 UserAccount.deleteUser(120);
                 Console.WriteLine("User deleted");
-            } catch (ArgumentOutOfRangeException ex) when (ex.HResult < 0) {
-                Console.WriteLine("ArgumentOutOfRangeException: ID mustn't be less than 0");
-            } catch (ArgumentOutOfRangeException ex) when (ex.HResult >= 100) {
-                Console.WriteLine("ArgumentOutOfRangeException: ID must be less than 100");
+            } catch (UserIdOutOfRangeException ex) when (ex.Id < 0) {
+                Console.WriteLine("UserIdOutOfRangeException: ID mustn't be less than 0");
+            } catch (UserIdOutOfRangeException ex) when (ex.Id >= 100) {
+                Console.WriteLine("UserIdOutOfRangeException: ID must be less than 100");
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }

@@ -114,12 +114,8 @@ namespace Messenger
         }
 
         public static UserAccount findUser(int id) {
-            if (id > users.Length || id < 0) {
-                ArgumentOutOfRangeException ex = new ArgumentOutOfRangeException("User ID");
-                ex.HResult = id;
-                throw ex;
-            }
-            if (users[id] == null) throw new UserFindException("User not found", id);
+            if (id > users.Length || id < 0) throw new UserIdOutOfRangeException("User ID", id);
+            if (users[id] == null) throw new UserFindException("User does not exist", id);
             return users[id];
         }
 
@@ -180,11 +176,7 @@ namespace Messenger
             throw new UserAuthException("User not found", username);
         }
         public static void deleteUser(int id) {
-            if (id > users.Length || id < 0) {
-                ArgumentOutOfRangeException ex = new ArgumentOutOfRangeException("User ID");
-                ex.HResult = id;
-                throw ex;
-            }
+            if (id > users.Length || id < 0) throw new UserIdOutOfRangeException("User ID", id);
             if (users[id] == null) throw new UserFindException("User does not exist", id);
             users[id] = null;
         }
@@ -200,7 +192,15 @@ namespace Messenger
         }
     }
 
-    public class UserFindException : ArgumentException
+    public class UserIdOutOfRangeException : ArgumentOutOfRangeException
+    {
+        public int Id { get; }
+        public UserIdOutOfRangeException(string message, int id) : base(message) {
+            Id = id;
+        }
+    }
+
+    public class UserFindException : NullReferenceException
     {
         public int Id { get; }
         public UserFindException(string message, int id) : base(message) {
