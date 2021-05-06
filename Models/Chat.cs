@@ -28,12 +28,12 @@ namespace Messenger
 
         public virtual List<int> Participants { get; }
 
-        internal List<IMessage> Messages {
+        internal List<IMessage> Messages
+        {
             get { return messages; }
         }
 
-        public Chat()
-        {
+        public Chat() {
             id = _nextRoomId++;
             messages = new List<IMessage>();
             participants = new List<int>();
@@ -51,22 +51,19 @@ namespace Messenger
         }
 
         public static Chat FindChat(int id) {
-            if (id >= 0 && id < _nextRoomId){
+            if (id >= 0 && id < _nextRoomId) {
                 return chatRooms[id];
-            }
-            else return null;
+            } else return null;
         }
 
-        protected bool addUser(UserAccount user)
-        {
+        protected bool addUser(UserAccount user) {
             if (participants.Contains(user.Id)) return false;
             participants.Add(user.Id);
             ChatNotification += user.NotifyUser;
             return true;
         }
 
-        protected bool removeUser(UserAccount user)
-        {
+        protected bool removeUser(UserAccount user) {
             if (!participants.Contains(user.Id)) return false;
             participants.Remove(user.Id);
             ChatNotification -= user.NotifyUser;
@@ -101,8 +98,7 @@ namespace Messenger
             messages.ForEach(msg => msg.show());
         }
 
-        protected virtual void OnDestroy()
-        {
+        protected virtual void OnDestroy() {
             ChatNotification?.Invoke(this, ChatEvents.delete);
         }
     }

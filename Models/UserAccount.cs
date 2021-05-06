@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Messenger {
-    public class UserAccount {
+namespace Messenger
+{
+    public class UserAccount
+    {
 
         private static UserAccount[] users = new UserAccount[100];
         private static int _nextUserId = 0;
@@ -22,16 +24,19 @@ namespace Messenger {
             get { return system; }
         }
 
-        public int Id {
+        public int Id
+        {
             get { return id; }
         }
 
-        public int Rank {
+        public int Rank
+        {
             get { return rank; }
             set { rank = value; }
         }
 
-        public string Username {
+        public string Username
+        {
             get { return username; }
             set {
                 if (value.Length > 2) username = value;
@@ -39,7 +44,8 @@ namespace Messenger {
             }
         }
 
-        public string Password {
+        public string Password
+        {
             get { return password; }
             set {
                 if (value.Length < 6) Console.WriteLine("Довжина паролю має бути не менше 6 символiв");
@@ -60,7 +66,7 @@ namespace Messenger {
             GroupChats = new List<int>();
             users[id] = this;
         }
-        
+
 
         // constructor inizialization
         public UserAccount(string username, string password) {
@@ -165,12 +171,11 @@ namespace Messenger {
                 if (u.username == username) {
                     if (u.password != password) throw new Exception("Wrong password");
                     return u;
-                } 
+                }
             }
             throw new UserAuthException("User not found", username);
         }
-        public static void deleteUser(int id)
-        {
+        public static void deleteUser(int id) {
             if (id > users.Length || id < 0) throw new ArgumentOutOfRangeException("User ID");
             if (users[id] == null) throw new UserFindException("User does not exist", id);
             users[id] = null;
@@ -179,10 +184,8 @@ namespace Messenger {
         public void showGroupChats() { }
         public void showUserInfo() { }
 
-        public void NotifyUser(Chat chat, Chat.ChatEvents chatEvent)
-        {
-            if(chatEvent == Chat.ChatEvents.delete)
-            {
+        public void NotifyUser(Chat chat, Chat.ChatEvents chatEvent) {
+            if (chatEvent == Chat.ChatEvents.delete) {
                 string chatName = chat is GroupChat ? ((GroupChat)chat).Name : "chat" + chat.Id;
                 Console.WriteLine("Notification to user" + id + ": " + chatName + " was deleted");
             }
@@ -192,13 +195,13 @@ namespace Messenger {
     public class UserFindException : ArgumentException
     {
         public int Id { get; }
-        public UserFindException(string message, int id) : base(message)
-        {
+        public UserFindException(string message, int id) : base(message) {
             Id = id;
         }
     }
 
-    public class UserAuthException : ArgumentException {
+    public class UserAuthException : ArgumentException
+    {
         public string Username { get; }
         public UserAuthException(string message, string username) : base(message) {
             Username = username;

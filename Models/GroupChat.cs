@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Messenger {
-    public class GroupChat : Chat {
+namespace Messenger
+{
+    public class GroupChat : Chat
+    {
         protected string name;
         protected int admin;
 
         public delegate void EventHandler(Object sender, string message);
         public event EventHandler ParticipantsChanged;
 
-        public string Name {
+        public string Name
+        {
             get { return name; }
             set {
                 if (value.Length >= 3 && value.Length < 30) name = value;
@@ -18,7 +21,8 @@ namespace Messenger {
             }
         }
 
-        public int Admin {
+        public int Admin
+        {
             get { return admin; }
             set {
                 if (value >= 0) admin = value;
@@ -26,7 +30,8 @@ namespace Messenger {
             }
         }
 
-        public override List<int> Participants {
+        public override List<int> Participants
+        {
             get { return participants; }
         }
 

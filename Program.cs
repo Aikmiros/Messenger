@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace Messenger {
-    class Program {
+namespace Messenger
+{
+    class Program
+    {
         static void Main(string[] args) {
             Console.WriteLine("Messenger");
             Console.WriteLine("Version: 1");
@@ -19,10 +21,10 @@ namespace Messenger {
             try {
                 UserAccount user1 = UserAccount.login("user1", "passwor");
                 Console.WriteLine("Succesful login");
-            } catch(UserAuthException ex) {
+            } catch (UserAuthException ex) {
                 Console.WriteLine("Exception: " + ex.Message);
                 Console.WriteLine("Exception: " + "No user with username - " + ex.Username);
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
@@ -55,30 +57,22 @@ namespace Messenger {
             try {
                 UserAccount user1 = UserAccount.findUser(id);
                 Console.WriteLine("User found");
-            }
-            catch (UserFindException ex) {
+            } catch (UserFindException ex) {
                 Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
-            }
-            catch (ArgumentOutOfRangeException) when (id < 0)
-            {
+            } catch (ArgumentOutOfRangeException) when (id < 0) {
                 Console.WriteLine("ID mustn't be less than 0");
-            }
-            catch (ArgumentOutOfRangeException) when (id >= 100)
-            {
+            } catch (ArgumentOutOfRangeException) when (id >= 100) {
                 Console.WriteLine("ID must be less than 100");
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
             try {
                 UserAccount user2 = UserAccount.findUser(15);
                 Console.WriteLine("Users found");
-            }
-            catch (UserFindException ex) {
+            } catch (UserFindException ex) {
                 Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
@@ -86,22 +80,18 @@ namespace Messenger {
             try {
                 UserAccount.deleteUser(-20);
                 Console.WriteLine("User deleted");
-            }
-            catch (UserFindException ex) {
+            } catch (UserFindException ex) {
                 Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
             try {
                 UserAccount.deleteUser(25);
                 Console.WriteLine("User deleted");
-            }
-            catch (UserFindException ex) {
+            } catch (UserFindException ex) {
                 Console.WriteLine("UserFindException: " + ex.Message + ". ID: " + ex.Id);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
@@ -111,21 +101,17 @@ namespace Messenger {
 
             try {
                 chat1.sendMessage(user, "");
-            }
-            catch (ArgumentException ex) {
+            } catch (ArgumentException ex) {
                 Console.WriteLine("ArgumentException: " + ex.Message);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine("Exception: " + ex.Message);
             }
 
             try {
                 chat1.sendMessage(user, null);
-            }
-            catch (ArgumentNullException ex) {
+            } catch (ArgumentNullException ex) {
                 Console.WriteLine("ArgumentNullException: " + ex.Message);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine("Exception: " + ex.Message);
             }
 
