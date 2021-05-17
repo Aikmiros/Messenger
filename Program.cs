@@ -133,7 +133,7 @@ namespace Messenger
             }
             try {
                 int[] array = null;
-                array[0] += 3;
+                //array[0] += 3;
             } catch (NullReferenceException ex) {
                 Console.WriteLine("NullReferenceException: " + ex.Message);
             }
